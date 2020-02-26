@@ -1,0 +1,39 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Home</h2>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+@Html.ActionLink("Create new Movie Details", "Create")
+<br />
+@if (TempData["Message"] != null)
+{
+    @Html.Label((string)TempData["Message"])
+}
+<table border="1">
+    <tr>
+        <th>Movie Name</th>
+        <th>Movie Id</th>
+        <th>Show Time</th>
+        <th>Price</th>
+        <th>Action</th>
+    </tr>
+    @foreach (OnlineMovieTicket.Entity.Movie movie in @Model)
+    {
+        <tr>
+            <td>@movie.MovieName</td>
+            <td>@movie.MovieId</td>
+            <td>@movie.ShowTime</td>
+            <td>@movie.Price</td>
+            <td>
+                @Html.ActionLink("Edit /", "Edit", new { id = movie.MovieId })
+                @Html.ActionLink("Delete", "Delete", new { id = movie.MovieId })
+            </td>
+        </tr>
+    }
+</table>

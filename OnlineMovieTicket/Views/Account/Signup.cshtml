@@ -1,0 +1,58 @@
+﻿@model OnlineMovieTicket.Entity.AccountData
+
+@{
+    ViewBag.Title = "Signup";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+    <div class="imgsignup">
+        <div class="login-card">
+
+            <h1 class="h">Registration</h1>
+            <pre><b>Name</b>                @Html.TextBoxFor(model => model.Name, htmlAttributes: new { @class = "input-box-s   " })</pre>
+            <label for="dob"><b> Dob</b></label>
+            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+            @Html.DropDownList("date", new List<SelectListItem> {
+       new SelectListItem { Text= "01", Value = "01" },
+       new SelectListItem { Text= "02", Value = "02" },
+       new SelectListItem { Text= "03", Value = "03" },
+       new SelectListItem { Text= "04", Value = "04" },
+       new SelectListItem { Text= "05", Value = "05" },
+       new SelectListItem { Text= "06", Value = "06" },
+       new SelectListItem { Text= "07", Value = "07" },
+       }
+       )
+
+            @Html.DropDownList("month", new List<SelectListItem> {
+      new SelectListItem { Text= "01", Value = "01" },
+      new SelectListItem { Text= "02", Value = "02" },
+      new SelectListItem { Text= "03", Value = "03" },
+      new SelectListItem { Text= "04", Value = "04" },
+      new SelectListItem { Text= "05", Value = "05" },
+      new SelectListItem { Text= "06", Value = "06" },
+      new SelectListItem { Text= "07", Value = "07" },
+      }
+      )
+
+            @Html.DropDownList("year", new List<SelectListItem> {
+      new SelectListItem { Text= "1998", Value = "01" },
+      new SelectListItem { Text= "1999", Value = "02" },
+      new SelectListItem { Text= "2000", Value = "03" },
+      new SelectListItem { Text= "2001", Value = "04" },
+      new SelectListItem { Text= "2002", Value = "05" },
+      new SelectListItem { Text= "2003", Value = "06" },
+
+      }
+      )
+            <pre><b>Gender</b>              Male:@Html.RadioButton("Gender", "Male")   Female:@Html.RadioButton("Gender", "Female")   Others:@Html.RadioButton("Gender", "Others")</pre>
+            <pre><b>Password</b>         @Html.TextBoxFor(Model => Model.Password, htmlAttributes: new { @class = "input-box-s" })</pre>
+            <pre><b>Email</b>                @Html.TextBoxFor(Model => Model.Email, htmlAttributes: new { @class = "input-box-s" })</pre>
+            <pre><b>Phone</b>               @Html.TextBoxFor(Model => Model.Phone, htmlAttributes: new { @class = "input-box-s" })</pre>
+
+            <input type="submit" value="Signup" class="login-submit">
+
+            <button class="login-submit" type="button" onclick="location.href='@Url.Action("Login","Account")'">Login</button>
+
+        </div>
+
+    </div>

@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="~/Content/Movie.css" rel="stylesheet" type="text/css" />
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @RenderSection("head", false)
+</head>
+<body>
+    <div style="">
+        @Html.ActionLink("Home", "Index", "Movie") &nbsp; &nbsp; &nbsp;
+        @Html.ActionLink("Signup", "SignUp", "Account") &nbsp; &nbsp; &nbsp;
+        @Html.ActionLink("Login", "Login", "Account") &nbsp; &nbsp; &nbsp;
+        @Html.ActionLink("AboutUs", "AboutUs", "Account")
+    </div>
+    <br />
+    <br />
+    <br />
+    <div class="container body-content">
+        @RenderBody()
+
+
+    </div>
+    <br />
+
+</body>
+</html>

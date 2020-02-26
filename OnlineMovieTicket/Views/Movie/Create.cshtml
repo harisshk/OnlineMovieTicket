@@ -1,0 +1,51 @@
+﻿@model OnlineMovieTicket.Entity.Movie
+
+
+@{
+    ViewBag.Title = "Create";
+}
+
+@using (Html.BeginForm("Create", "Index", FormMethod.Post))
+{
+    <table>
+        <tr>
+            <td>
+                Movie Name :
+            </td>
+            <td>
+                @Html.TextBoxFor(Model => Model.MovieName)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Movie Id :
+            </td>
+            <td>
+                @Html.TextBoxFor(Model => Model.MovieId)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Show Time:
+            </td>
+            <td>
+                @Html.TextBoxFor(Model => Model.ShowTime)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Price :
+            </td>
+            <td>
+                @Html.TextBoxFor(Model => Model.Price)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="submit" value="Create" />
+            </td>
+            <td>
+                <a href="~/Index">Back</a>
+            </td>
+        </tr>
+    </table>

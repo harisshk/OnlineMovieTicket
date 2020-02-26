@@ -1,0 +1,86 @@
+﻿﻿.input-box {
+    height: 10px;
+    width: 100%;
+    padding: 15px 22px;
+    margin: 10px 5px;
+    box-sizing: border-box;
+    border-color: #11a3f4;
+}
+
+.input-box-s {
+    height: 10px;
+    width: 60%;
+    padding: 15px 22px;
+    margin: 10px 5px;
+    box-sizing: border-box;
+    border-color: #11a3f4;
+}
+
+.login-card {
+    background-color: rgba(234, 234, 234, 0.62);
+    padding: 50px;
+    padding-right: 50px;
+    width: 350px;
+    margin: 0 auto 10%;
+    border-radius: 5px;
+    border-color: Background;
+    overflow: hidden;
+    text-decoration: solid;
+}
+
+.login {
+    text-align: center;
+    font-size: 14px;
+    font-family: 'Arial', sans-serif;
+    font-weight: 700;
+    height: 36px;
+    width: 150px;
+    padding: 0 8px;
+}
+
+.login-submit {
+    align-content: center;
+    border: 0px;
+    padding: 12px 30px;
+    font-family: Arial,'sans-serif';
+    color: #fff;
+    margin: 0 auto;
+    width: 150px;
+    text-shadow: 0 1px rgba(0,0,0,0.1);
+    background-color: #4d90fe;
+}
+
+    .login-submit:hover {
+        border: 0px;
+        text-shadow: 0 1px rgba(0,0,0,0.3);
+        background-color: #11a3f4;
+        cursor: pointer;
+    }
+
+.imgg {
+    background: url('/Content/pop.png') no-repeat center center fixed;
+    background-size: cover;
+}
+
+.imgsignup {
+    background: url(https://img.favpng.com/9/4/7/popcorn-discount-theater-film-cinema-png-favpng-q7dPketq8ekzYwnZ9Txc9hNpX.jpg) no-repeat center center fixed;
+    background-size: cover;
+    fill: aqua;
+}
+
+b, label {
+    font-family: Arial;
+}
+
+pre {
+    font-family: Arial;
+}
+
+.h {
+    text-align: center;
+    text-anchor: start;
+}
+
+.footer {
+    bottom: 0;
+}

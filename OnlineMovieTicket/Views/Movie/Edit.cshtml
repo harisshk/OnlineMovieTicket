@@ -1,0 +1,50 @@
+﻿@model OnlineMovieTicket.Entity.Movie
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm("Update", "Index", FormMethod.Post))
+{
+    @Html.HiddenFor(Model => Model.MovieId);
+    <table>
+        <tr>
+            <td>
+                Travels Name :
+            </td>
+            <td>
+                @Html.TextBoxFor(Model => Model.MovieName)
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                Source City:
+            </td>
+            <td>
+                @Html.TextBoxFor(Model => Model.ShowTime)
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                Price :
+            </td>
+            <td>
+                @Html.TextBoxFor(Model => Model.Price)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="submit" />
+            </td>
+            <td>
+                <a href="~/Index">Back</a>
+            </td>
+        </tr>
+    </table>
+}

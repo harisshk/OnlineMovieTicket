@@ -8,7 +8,7 @@ namespace OnlineMovieTicket.Controllers
 {
     public class AccountController : Controller
     {
-       
+
 
         public ActionResult Login()
         {

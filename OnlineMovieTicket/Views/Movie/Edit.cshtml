@@ -8,7 +8,7 @@
 
 <h2>Edit</h2>
 
-@using (Html.BeginForm("Update", "Index", FormMethod.Post))
+@using (Html.BeginForm("Update", "Movie", FormMethod.Post))
 {
     @Html.HiddenFor(Model => Model.MovieId);
     <table>
@@ -43,7 +43,7 @@
                 <input type="submit" />
             </td>
             <td>
-                <a href="~/Index/Index">Back</a>
+                <a href="~/Movie/Index">Back</a>
             </td>
         </tr>
     </table>

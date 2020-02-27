@@ -6,6 +6,10 @@
     <link href="~/Content/Movie.css" rel="stylesheet" type="text/css" />
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @RenderSection("head", false)
+    <script src="~/Scripts/modernizr-2.8.3.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    @RenderSection("Scripts",false)
 </head>
 <body>
     <div style="">
@@ -19,8 +23,6 @@
     <br />
     <div class="container body-content">
         @RenderBody()
-
-
     </div>
     <br />
 

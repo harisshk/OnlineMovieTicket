@@ -3,9 +3,11 @@
 
 @{
     ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<h2></h2>
 
-@using (Html.BeginForm("Create", "Index", FormMethod.Post))
+@using (Html.BeginForm("Create", "Movie", FormMethod.Post))
 {
     <table>
         <tr>
@@ -14,7 +16,9 @@
             </td>
             <td>
                 @Html.TextBoxFor(Model => Model.MovieName)
+                @Html.ValidationMessageFor(model => model.MovieName, "", new { @class = "text-danger" })
             </td>
+
         </tr>
         <tr>
             <td>
@@ -22,6 +26,7 @@
             </td>
             <td>
                 @Html.TextBoxFor(Model => Model.MovieId)
+                @Html.ValidationMessageFor(model => model.MovieId, "", new { @class = "text-danger" })
             </td>
         </tr>
         <tr>
@@ -30,6 +35,7 @@
             </td>
             <td>
                 @Html.TextBoxFor(Model => Model.ShowTime)
+                @Html.ValidationMessageFor(model => model.ShowTime, "", new { @class = "text-danger" })
             </td>
         </tr>
         <tr>
@@ -38,6 +44,7 @@
             </td>
             <td>
                 @Html.TextBoxFor(Model => Model.Price)
+                @Html.ValidationMessageFor(model => model.Price, "", new { @class = "text-danger" })
             </td>
         </tr>
         <tr>
@@ -45,7 +52,13 @@
                 <input type="submit" value="Create" />
             </td>
             <td>
-                <a href="~/Index">Back</a>
+                <a href="~/Movie/Index">Back</a>
             </td>
         </tr>
     </table>
+    @section Scripts{
+        <script src="~/Scripts/jquery.validate.min.js"></script>
+        <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+        <script src="~/Scripts/jquery.validate.js"></script>
+    }
+}

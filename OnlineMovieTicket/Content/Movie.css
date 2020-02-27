@@ -15,6 +15,10 @@
     box-sizing: border-box;
     border-color: #11a3f4;
 }
+.text-danger {
+    color: red;
+    text-decoration-color: red;
+}
 
 .login-card {
     background-color: rgba(234, 234, 234, 0.62);

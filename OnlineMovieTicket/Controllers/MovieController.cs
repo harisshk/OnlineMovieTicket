@@ -31,12 +31,8 @@ namespace MovieTicket.Controllers
             try
             {
                 Movie movie = new Movie();
-                //movie.MovieName = formCollection["MovieName"];
-                //movie.MovieId = Convert.ToInt32(formCollection["MovieId"]);
-                //movie.ShowTime = formCollection["ShowTime"];
-                //movie.Price = Convert.ToDouble(formCollection["Price"]);
-
-                if (TryUpdateModel(movie))                  //////////////////TryUpdateModel..
+                
+                if (TryUpdateModel(movie))    
                 {
                 movieRepository.AddMovie(movie);
                 TempData["Message"] = "Bus detail added successfully!!!";

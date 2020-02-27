@@ -35,7 +35,7 @@ namespace MovieTicket.Controllers
                 if (TryUpdateModel(movie))    
                 {
                 movieRepository.AddMovie(movie);
-                TempData["Message"] = "Bus detail added successfully!!!";
+                TempData["Message"] = "Movie detail added successfully!!!";
                 }
                 return RedirectToAction("Index");
             }
@@ -48,7 +48,7 @@ namespace MovieTicket.Controllers
         {
 
             movieRepository.DeleteMovie(id);
-            TempData["Message"] = "Bus Detail deleted successfully";
+            TempData["Message"] = "Movie Detail deleted successfully";
             return RedirectToAction("Index");
         }
         public ActionResult Edit(int id)
@@ -60,7 +60,7 @@ namespace MovieTicket.Controllers
         public ActionResult Update(Movie movie)
         {
             movieRepository.EditMovieDetails(movie);
-            TempData["Message"] = "Bus Details Edited successfully!!";
+            TempData["Message"] = "Movie Details Edited successfully!!";
             return RedirectToAction("Index");
         }
     }

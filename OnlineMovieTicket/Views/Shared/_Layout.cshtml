@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="~/Content/Movie.css" rel="stylesheet" type="text/css" />
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>@ViewBag.Title - Inox Cinemas</title>
     @RenderSection("head", false)
     <script src="~/Scripts/modernizr-2.8.3.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>
@@ -12,16 +12,16 @@
     @RenderSection("Scripts",false)
 </head>
 <body>
-    <div style="">
-        @Html.ActionLink("Home", "Index", "Movie") &nbsp; &nbsp; &nbsp;
-        @Html.ActionLink("Signup", "SignUp", "Account") &nbsp; &nbsp; &nbsp;
-        @Html.ActionLink("Login", "Login", "Account") &nbsp; &nbsp; &nbsp;
-        @Html.ActionLink("AboutUs", "AboutUs", "Account")
-    </div>
+    <header >
+        @Html.ActionLink("Home", "Index", "Movie", null, new { @class = "btn" }) &nbsp; &nbsp; &nbsp;
+        @Html.ActionLink("Signup", "SignUp", "Account", null, new { @class = "btn" }) &nbsp; &nbsp; &nbsp;
+        @Html.ActionLink("Login", "Login", "Account",  null, new { @class = "btn" }) &nbsp; &nbsp; &nbsp;
+        @Html.ActionLink("AboutUs", "AboutUs", "Account", null, new { @class = "btn" })
+    </header>
     <br />
     <br />
     <br />
-    <div class="container body-content">
+    <div>
         @RenderBody()
     </div>
     <br />

@@ -4,15 +4,20 @@
     ViewBag.Title = "Login";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<body class="imgg">
-    <div class="login-card">
-        <h1 class="h">Login</h1>
+@using (Html.BeginForm("Login", "Account", FormMethod.Post))
+{
+    <body class="imgg">
+        <div class="login-card">
+            <h1 class="h">Login</h1>
 
-        <pre>USERNAME       @Html.TextBoxFor(Model => Model.Name, htmlAttributes: new { @class = "input-box-s" })</pre>
+            <pre>USERNAME       @Html.TextBoxFor(Model => Model.Name, htmlAttributes: new { @class = "input-box-s" , @placeholder ="Username"})</pre>
+            @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
 
-     
-        <pre>PASSWORD       @Html.TextBoxFor(Model => Model.Password, htmlAttributes: new { @class = "input-box-s" })</pre>
-        <input type="submit" value="LOGIN" class="login-submit">
-        
-    </div>
-</body>
+            <pre>PASSWORD       @Html.PasswordFor(Model => Model.Password, htmlAttributes: new { @class = "input-box-s",  @placeholder ="Password" })</pre>
+            @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+            <br />
+            <input type="submit" value="LOGIN" class="login-submit">
+        </div>
+    </body>
+}
+

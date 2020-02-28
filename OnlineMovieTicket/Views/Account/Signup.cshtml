@@ -4,12 +4,15 @@
     ViewBag.Title = "Signup";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
+@using (Html.BeginForm("SignUp", "Account", FormMethod.Post))
+{
     <body class="imgsignup">
         <div class="login-card">
 
             <h1 class="h">Registration</h1>
-            <pre><b>Name</b>                @Html.TextBoxFor(model => model.Name, htmlAttributes: new { @class = "input-box-s   " })</pre>
+            <pre>USERNAME       @Html.TextBoxFor(Model => Model.Name, htmlAttributes: new { @class = "input-box-s" , @placeholder ="Username"})</pre>
+            @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+            <br />
             <label for="dob"><b> Dob</b></label>
             &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
             @Html.DropDownList("date", new List<SelectListItem> {
@@ -21,7 +24,7 @@
        new SelectListItem { Text= "06", Value = "06" },
        new SelectListItem { Text= "07", Value = "07" },
        }
-       )
+    )
 
             @Html.DropDownList("month", new List<SelectListItem> {
       new SelectListItem { Text= "01", Value = "01" },
@@ -32,7 +35,7 @@
       new SelectListItem { Text= "06", Value = "06" },
       new SelectListItem { Text= "07", Value = "07" },
       }
-      )
+    )
 
             @Html.DropDownList("year", new List<SelectListItem> {
       new SelectListItem { Text= "1998", Value = "01" },
@@ -43,16 +46,23 @@
       new SelectListItem { Text= "2003", Value = "06" },
 
       }
-      )
+    )
+            @Html.ValidationMessageFor(model => model.DateOfBirth, "", new { @class = "text-danger" })
             <pre><b>Gender</b>              Male:@Html.RadioButton("Gender", "Male")   Female:@Html.RadioButton("Gender", "Female")   Others:@Html.RadioButton("Gender", "Others")</pre>
+            @Html.ValidationMessageFor(model => model.Gender, "", new { @class = "text-danger" })
             <pre><b>Password</b>         @Html.TextBoxFor(Model => Model.Password, htmlAttributes: new { @class = "input-box-s" })</pre>
+            @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
             <pre><b>Email</b>                @Html.TextBoxFor(Model => Model.Email, htmlAttributes: new { @class = "input-box-s" })</pre>
+            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
             <pre><b>Phone</b>               @Html.TextBoxFor(Model => Model.Phone, htmlAttributes: new { @class = "input-box-s" })</pre>
-
+            @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
+            <br />
             <input type="submit" value="Signup" class="login-submit">
 
-            <button class="login-submit" type="button" onclick="location.href='@Url.Action("Login","Account")'">Login</button>
+
 
         </div>
 
     </body>
+
+}

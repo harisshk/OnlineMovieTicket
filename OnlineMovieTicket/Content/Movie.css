@@ -35,7 +35,7 @@
 .login {
     text-align: center;
     font-size: 14px;
-    font-family: 'Arial', sans-serif;
+    font-family: Arial;
     font-weight: 700;
     height: 36px;
     width: 150px;
@@ -46,7 +46,7 @@
     align-content: center;
     border: 0px;
     padding: 12px 30px;
-    font-family: Arial,'sans-serif';
+    font-family: Arial;
     color: #fff;
     margin: 0 auto;
     width: 150px;
@@ -91,7 +91,6 @@ pre {
 
 header{
     display:block unset;
-    
     background-color:rgba(18, 31, 27, 0.75);
     text-align:end;
     padding:10px 25px 10px;
@@ -110,3 +109,7 @@ header{
     background-color:darkblue;
     border:double;
 }
+.text-danger{  
+    color: red;
+    font-family:Calibri;
+}   

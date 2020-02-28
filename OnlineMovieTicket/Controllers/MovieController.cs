@@ -1,11 +1,8 @@
-﻿using System;
+﻿using OnlineMovieTicket.Entity;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using OnlineMovieTicket.Entity;
 using System.Web.Mvc;
 
-namespace MovieTicket.Controllers
+namespace OnlineMovieTicket.Controllers
 {
     public class MovieController : Controller
     {

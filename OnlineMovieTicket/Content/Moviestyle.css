@@ -1,0 +1,92 @@
+﻿body {
+}
+
+.master {
+    text-align: right;
+    background-color: #97E7E6;
+    display: block unset;
+    padding: 15px 20px 15px;
+    border:medium;
+    border-radius:10px;
+}
+
+.masterbtn {
+    border:solid;
+    margin:0 0 0 15px;
+    border-radius:10px;
+    border-color:#0A1823;
+    display: compact;
+    padding: 8px 8px 8px 8px;
+    color: #044170;
+    font-family: Arial;
+    font-display: block;
+    text-decoration: none;
+}
+
+    .masterbtn:hover {
+        background-color: #0A1823;
+        border: double;
+        color: #DFEEFA;
+    }
+.text-danger {
+    color: red;
+    font-family: Calibri;
+}
+.wrapper {
+    width:auto;
+    height: 100%;
+    background: url('/Content/Background.jpg') no-repeat center center fixed;
+    background-size: cover;
+}
+.wrapper::after{
+    background-color:rgba(0, 0, 0, 0.52);
+}
+.login-box-outer{
+    max-width:450px;
+    padding:60px;
+    position:relative;
+    z-index:99;
+    margin-left:50%;
+    margin-top:100px;
+    transform:translateX(-50%);
+    background-color:rgba(199, 236, 245, 0.75);
+    box-sizing:border-box;
+    }
+.login-box-outer h1{
+    font-size:32px;
+    color:#000010;
+    text-transform:capitalize;
+    margin-top:0;
+}
+.login-box-outer input{
+    height: 50px;
+    width: 100%;
+    border-radius: 3px;
+    background: rgba(199, 240, 245, 0.99);
+    color: #000010;
+    border: 1px solid rgba(199, 240, 245, 0.99);
+    padding-left:15px;
+    box-sizing:border-box;
+}
+.login-box-outer input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
+    color:rgba(51, 93, 235, 0.95);
+}
+.input-wrap{
+    margin-bottom:25px;
+}
+.input-wrap button {
+    height: 50px;
+    width: 100%;
+    background: #0A1823;
+    border: 1px solid #0A1823;
+    color: rgba(199, 236, 245, 0.75);
+    font-weight:500;
+    font-size:16px;
+    border-radius:3px;
+}
+    .input-wrap button:hover {
+        cursor: pointer;
+        background: rgba(0, 0, 0, 0.00);
+        color: #0A1823;
+        border: 3px solid #0A1823;
+    }

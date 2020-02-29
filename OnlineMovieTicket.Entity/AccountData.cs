@@ -4,18 +4,18 @@ namespace OnlineMovieTicket.Entity
     public class AccountData
     {
         
-        [Required(ErrorMessage ="Name Required")]
+        [Required(ErrorMessage ="Username Required.")]
         
         public string Name { get; set; }
 
-        [Required(ErrorMessage = "Gender Required")]
+        [Required(ErrorMessage = "Gender Required.")]
         public string Gender { get; set; }
 
-        [Required(ErrorMessage = "Email Required")]
+        [Required(ErrorMessage = "Email Required.")]
         [EmailAddress]
         public string Email { get; set; }
 
-        [Required(ErrorMessage = "Date of Birth Required")]
+        [Required(ErrorMessage = "Date of Birth Required.")]
         public string DateOfBirth { get; set; }
 
         [Required(ErrorMessage = "Phone number Required")]

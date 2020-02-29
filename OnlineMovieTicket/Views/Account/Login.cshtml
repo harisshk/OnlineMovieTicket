@@ -7,25 +7,39 @@
 @using (Html.BeginForm("Login", "Account", FormMethod.Post))
 {
     @*<body class="imgg">
-        <div class="login-card">
-            <h1 class="h">Login</h1>
+            <div class="login-card">
+                <h1 class="h">Login</h1>
 
-            <pre>USERNAME       @Html.TextBoxFor(Model => Model.Name, htmlAttributes: new { @class = "input-box-s" , @placeholder ="Username"})</pre>
-            @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                <pre>USERNAME       @Html.TextBoxFor(Model => Model.Name, htmlAttributes: new { @class = "input-box-s" , @placeholder ="Username"})</pre>
+                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
 
-            <pre>PASSWORD       @Html.PasswordFor(Model => Model.Password, htmlAttributes: new { @class = "input-box-s",  @placeholder ="Password" })</pre>
-            @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
-            <br />
-            <input type="submit" value="LOGIN" class="login-submit">
-        </div>
-    </body>*@
-    <body>
-        <div class="wrapper">
-            <header>
-                <div class="inner">
-
-                </div>
-            </header>
+                <pre>PASSWORD       @Html.PasswordFor(Model => Model.Password, htmlAttributes: new { @class = "input-box-s",  @placeholder ="Password" })</pre>
+                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                <br />
+                <input type="submit" value="LOGIN" class="login-submit">
+            </div>
+        </body>*@
+    <body class="wrapper">
+        <div class="login-box-outer">
+            <div class="login-box-inner">
+                <h1>Sign in</h1>
+                <form>
+                    <div class="input-wrap">
+                        @Html.TextBoxFor(Model => Model.Name, htmlAttributes: new { @placeholder = "Email or Phone number" })
+                        @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="input-wrap">
+                        @Html.PasswordFor(Model => Model.Password, htmlAttributes: new { @placeholder = "Password" })
+                        @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="input-wrap">
+                        <button type="submit">Login</button>
+                    </div>
+                    <div class="input-wrap">
+                        <button type="button" value="Signup" onclick="location.href='@Url.Action("Signup", "Account")';return false;">Signup</button>
+                    </div>
+                </form>
+            </div>
         </div>
     </body>
 }

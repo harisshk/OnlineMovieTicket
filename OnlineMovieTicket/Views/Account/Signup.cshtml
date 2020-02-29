@@ -6,8 +6,8 @@
 }
 @using (Html.BeginForm("SignUp", "Account", FormMethod.Post))
 {
-    <body class="imgsignup">
-        <div class="login-card">
+    <body >
+        <div >
 
             <h1 class="h">Registration</h1>
             <pre>USERNAME       @Html.TextBoxFor(Model => Model.Name, htmlAttributes: new { @class = "input-box-s" , @placeholder ="Username"})</pre>
@@ -50,12 +50,20 @@
             @Html.ValidationMessageFor(model => model.DateOfBirth, "", new { @class = "text-danger" })
             <pre><b>Gender</b>              Male:@Html.RadioButton("Gender", "Male")   Female:@Html.RadioButton("Gender", "Female")   Others:@Html.RadioButton("Gender", "Others")</pre>
             @Html.ValidationMessageFor(model => model.Gender, "", new { @class = "text-danger" })
-            <pre><b>Password</b>         @Html.TextBoxFor(Model => Model.Password, htmlAttributes: new { @class = "input-box-s" })</pre>
+
+
+            <pre><b>Password</b>         @Html.PasswordFor(Model => Model.Password, htmlAttributes: new { @class = "input-box-s" })</pre>
             @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+
+
             <pre><b>Email</b>                @Html.TextBoxFor(Model => Model.Email, htmlAttributes: new { @class = "input-box-s" })</pre>
             @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+
+
             <pre><b>Phone</b>               @Html.TextBoxFor(Model => Model.Phone, htmlAttributes: new { @class = "input-box-s" })</pre>
             @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
+
+
             <br />
             <input type="submit" value="Signup" class="login-submit">
 

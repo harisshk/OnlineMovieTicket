@@ -6,7 +6,7 @@
 }
 @using (Html.BeginForm("Login", "Account", FormMethod.Post))
 {
-    <body class="imgg">
+    @*<body class="imgg">
         <div class="login-card">
             <h1 class="h">Login</h1>
 
@@ -17,6 +17,15 @@
             @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
             <br />
             <input type="submit" value="LOGIN" class="login-submit">
+        </div>
+    </body>*@
+    <body>
+        <div class="wrapper">
+            <header>
+                <div class="inner">
+
+                </div>
+            </header>
         </div>
     </body>
 }

@@ -32,7 +32,7 @@
     color: red;
     font-family: Calibri;
 }
-.wrapper {
+.wrapper{
     width:auto;
     height: 100%;
     background: url('/Content/Background.jpg') no-repeat center center fixed;
@@ -84,9 +84,37 @@
     font-size:16px;
     border-radius:3px;
 }
-    .input-wrap button:hover {
-        cursor: pointer;
-        background: rgba(0, 0, 0, 0.00);
-        color: #0A1823;
-        border: 3px solid #0A1823;
-    }
+.input-wrap button:hover {
+    cursor: pointer;
+    background: rgba(0, 0, 0, 0.00);
+    color: #0A1823;
+    border: 3px solid #0A1823;
+}
+
+.signup-box-outer {
+    max-width: 450px;
+    padding: 60px;
+    position: relative;
+    z-index: 99;
+    margin-left: 50%;
+    margin-top: 50px;
+    transform: translateX(-50%);
+    background-color: rgba(199, 236, 245, 0.75);
+    box-sizing: border-box;
+}
+
+.signup-box-outer-input {
+    height: 50px;
+    width: 100%;
+    border-radius: 3px;
+    background: rgba(199, 240, 245, 0.99);
+    color: #000010;
+    border: 1px solid rgba(199, 240, 245, 0.99);
+    padding-left: 15px;
+    box-sizing: border-box;
+}
+.radio-button {
+    margin-bottom:25px;
+}
+
+    

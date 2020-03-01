@@ -6,71 +6,158 @@
 }
 @using (Html.BeginForm("SignUp", "Account", FormMethod.Post))
 {
+    @*<body class="wrapper">
+            <div class="signup-box-outer">
+
+                <h1 >Registration</h1>
+                <pre class="input-wrap">USERNAME       @Html.TextBoxFor(Model => Model.Name, htmlAttributes: new {@placeholder ="Username"})</pre>
+                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                <br />
+                <label for="dob"><b> Dob</b></label>
+                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                @Html.DropDownList("date", new List<SelectListItem> {
+           new SelectListItem { Text= "01", Value = "01" },
+           new SelectListItem { Text= "02", Value = "02" },
+           new SelectListItem { Text= "03", Value = "03" },
+           new SelectListItem { Text= "04", Value = "04" },
+           new SelectListItem { Text= "05", Value = "05" },
+           new SelectListItem { Text= "06", Value = "06" },
+           new SelectListItem { Text= "07", Value = "07" },
+           }
+        )
+
+                @Html.DropDownList("month", new List<SelectListItem> {
+          new SelectListItem { Text= "01", Value = "01" },
+          new SelectListItem { Text= "02", Value = "02" },
+          new SelectListItem { Text= "03", Value = "03" },
+          new SelectListItem { Text= "04", Value = "04" },
+          new SelectListItem { Text= "05", Value = "05" },
+          new SelectListItem { Text= "06", Value = "06" },
+          new SelectListItem { Text= "07", Value = "07" },
+          }
+        )
+
+                @Html.DropDownList("year", new List<SelectListItem> {
+          new SelectListItem { Text= "1998", Value = "01" },
+          new SelectListItem { Text= "1999", Value = "02" },
+          new SelectListItem { Text= "2000", Value = "03" },
+          new SelectListItem { Text= "2001", Value = "04" },
+          new SelectListItem { Text= "2002", Value = "05" },
+          new SelectListItem { Text= "2003", Value = "06" },
+
+          }
+        )
+                @Html.ValidationMessageFor(model => model.DateOfBirth, "", new { @class = "text-danger" })
+                <pre><b>Gender</b>              Male:@Html.RadioButton("Gender", "Male")   Female:@Html.RadioButton("Gender", "Female")   Others:@Html.RadioButton("Gender", "Others")</pre>
+                @Html.ValidationMessageFor(model => model.Gender, "", new { @class = "text-danger" })
+
+
+                <pre><b>Password</b>         @Html.PasswordFor(Model => Model.Password, htmlAttributes: new { @class = "input-box-s" })</pre>
+                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+
+
+                <pre><b>Email</b>                @Html.TextBoxFor(Model => Model.Email, htmlAttributes: new { @class = "input-box-s" })</pre>
+                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+
+
+                <pre><b>Phone</b>               @Html.TextBoxFor(Model => Model.Phone, htmlAttributes: new { @class = "input-box-s" })</pre>
+                @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
+
+
+                <br />
+                <input type="submit" value="Signup" class="login-submit">
+
+
+
+            </div>
+
+        </body>*@
     <body class="wrapper">
-        <div >
+        <div class="signup-box-outer">
+            <div class="signup-box-inner">
+                <h1>Registration</h1>
+            </div>
+            <form>
+                <div class="input-wrap">
+                    <b>Username:</b>
+                    @Html.TextBoxFor(Model => Model.Name, htmlAttributes: new { @class = "signup-box-outer-input", @placeholder = "Username" })
+                </div>
+                <div>
+                    <label for="dob"><b> Dob:</b></label>
+                    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                    @Html.DropDownList("date", new List<SelectListItem> {
+               new SelectListItem { Text= "01", Value = "01" },
+               new SelectListItem { Text= "02", Value = "02" },
+               new SelectListItem { Text= "03", Value = "03" },
+               new SelectListItem { Text= "04", Value = "04" },
+               new SelectListItem { Text= "05", Value = "05" },
+               new SelectListItem { Text= "06", Value = "06" },
+               new SelectListItem { Text= "07", Value = "07" },
+               }
+            )
 
-            <h1 class="h">Registration</h1>
-            <pre>USERNAME       @Html.TextBoxFor(Model => Model.Name, htmlAttributes: new { @class = "input-box-s" , @placeholder ="Username"})</pre>
-            @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
-            <br />
-            <label for="dob"><b> Dob</b></label>
-            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-            @Html.DropDownList("date", new List<SelectListItem> {
-       new SelectListItem { Text= "01", Value = "01" },
-       new SelectListItem { Text= "02", Value = "02" },
-       new SelectListItem { Text= "03", Value = "03" },
-       new SelectListItem { Text= "04", Value = "04" },
-       new SelectListItem { Text= "05", Value = "05" },
-       new SelectListItem { Text= "06", Value = "06" },
-       new SelectListItem { Text= "07", Value = "07" },
-       }
-    )
+                    @Html.DropDownList("month", new List<SelectListItem> {
+              new SelectListItem { Text= "01", Value = "01" },
+              new SelectListItem { Text= "02", Value = "02" },
+              new SelectListItem { Text= "03", Value = "03" },
+              new SelectListItem { Text= "04", Value = "04" },
+              new SelectListItem { Text= "05", Value = "05" },
+              new SelectListItem { Text= "06", Value = "06" },
+              new SelectListItem { Text= "07", Value = "07" },
+              new SelectListItem { Text= "08", Value = "08" },
+              new SelectListItem { Text= "09", Value = "09" },
+              new SelectListItem { Text= "10", Value = "10" },
+              new SelectListItem { Text= "11", Value = "11" },
+              new SelectListItem { Text= "12", Value = "12" },
+              }
+            )
 
-            @Html.DropDownList("month", new List<SelectListItem> {
-      new SelectListItem { Text= "01", Value = "01" },
-      new SelectListItem { Text= "02", Value = "02" },
-      new SelectListItem { Text= "03", Value = "03" },
-      new SelectListItem { Text= "04", Value = "04" },
-      new SelectListItem { Text= "05", Value = "05" },
-      new SelectListItem { Text= "06", Value = "06" },
-      new SelectListItem { Text= "07", Value = "07" },
-      }
-    )
+                    @Html.DropDownList("year", new List<SelectListItem> {
+              new SelectListItem { Text= "1998", Value = "01" },
+              new SelectListItem { Text= "1999", Value = "02" },
+              new SelectListItem { Text= "2000", Value = "03" },
+              new SelectListItem { Text= "2001", Value = "04" },
+              new SelectListItem { Text= "2002", Value = "05" },
+              new SelectListItem { Text= "2003", Value = "06" },
 
-            @Html.DropDownList("year", new List<SelectListItem> {
-      new SelectListItem { Text= "1998", Value = "01" },
-      new SelectListItem { Text= "1999", Value = "02" },
-      new SelectListItem { Text= "2000", Value = "03" },
-      new SelectListItem { Text= "2001", Value = "04" },
-      new SelectListItem { Text= "2002", Value = "05" },
-      new SelectListItem { Text= "2003", Value = "06" },
+              }
+            )
+                    </div>
+                <div class="">
+                    @Html.ValidationMessageFor(model => model.DateOfBirth, "", new { @class = "text-danger" })
+                </div>
+                <br />
+                <br />
+                <div>
+                    <b>Gender</b><br />
+                    <span> Male </span> @Html.RadioButton("Gender", "Male",false,new { @class = "radio-button" })
+                    <span> Female </span> @Html.RadioButton("Gender", "Female",false,new { @class = "radio-button" })
+                    @Html.ValidationMessageFor(model => model.Gender, "", new { @class = "text-danger" })
+                </div>
 
-      }
-    )
-            @Html.ValidationMessageFor(model => model.DateOfBirth, "", new { @class = "text-danger" })
-            <pre><b>Gender</b>              Male:@Html.RadioButton("Gender", "Male")   Female:@Html.RadioButton("Gender", "Female")   Others:@Html.RadioButton("Gender", "Others")</pre>
-            @Html.ValidationMessageFor(model => model.Gender, "", new { @class = "text-danger" })
+                <div class="input-wrap">
+                    <b>Password:</b>
+                    @Html.PasswordFor(Model => Model.Password, htmlAttributes: new { @class = "signup-box-outer-input", @placeholder = "Pasword" })
+                    @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                </div>
 
+                <div class="input-wrap">
+                    <b>Email</b>   
+                    @Html.TextBoxFor(Model => Model.Email, htmlAttributes: new { @class = "signup-box-outer-input", @placeholder = "Email" })
+                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                </div>
 
-            <pre><b>Password</b>         @Html.PasswordFor(Model => Model.Password, htmlAttributes: new { @class = "input-box-s" })</pre>
-            @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
-
-
-            <pre><b>Email</b>                @Html.TextBoxFor(Model => Model.Email, htmlAttributes: new { @class = "input-box-s" })</pre>
-            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
-
-
-            <pre><b>Phone</b>               @Html.TextBoxFor(Model => Model.Phone, htmlAttributes: new { @class = "input-box-s" })</pre>
-            @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
-
-
-            <br />
-            <input type="submit" value="Signup" class="login-submit">
-
-
-
+                <div class="input-wrap">
+                    <b>Phone</b>
+                    @Html.TextBoxFor(Model => Model.Phone, htmlAttributes: new { @class = "signup-box-outer-input", @placeholder = "Phone" })
+                    @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
+                </div>
+        <br />
+        <div class="input-wrap">
+            <button type="submit">Signup</button>
         </div>
-
+        </form>
+        </div>
     </body>
 
 }

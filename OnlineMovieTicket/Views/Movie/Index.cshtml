@@ -31,7 +31,7 @@
             <td>@movie.ShowTime</td>
             <td>@movie.Price</td>
             <td>
-                @Html.ActionLink("Edit /", "Edit", new { id = movie.MovieId })
+                @Html.ActionLink("Edit", "Edit", new { id = movie.MovieId })
                 @Html.ActionLink("Delete", "Delete", new { id = movie.MovieId })
             </td>
         </tr>

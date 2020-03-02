@@ -125,6 +125,7 @@
 
 }
 .input-wrap a:hover{
-    color:#6994ed;
+    color:#2e07f5;
     text-decoration:underline;
+    cursor:pointer;
 }

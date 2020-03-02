@@ -19,7 +19,7 @@ namespace OnlineMovieTicket.Entity
         public string DateOfBirth { get; set; }
 
         [Required(ErrorMessage = "Phone number Required")]
-        [RegularExpression(@"^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$",
+        [RegularExpression(@"^[6789]\d{9}$",
                    ErrorMessage = "Entered phone format is not valid.")]
         public string Phone { get; set; }
 

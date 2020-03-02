@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineMovieTicket.Entity", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineMovieTicket.Repository", "OnlineMovieTicket.Repository\OnlineMovieTicket.Repository.csproj", "{074FD18F-BA33-4D6C-8CE6-DDA82D354E62}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineMocieTicket.BL", "OnlineMocieTicket.BL\OnlineMocieTicket.BL.csproj", "{44254ACC-5453-42A8-8CDA-2AB92BCA9F34}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{074FD18F-BA33-4D6C-8CE6-DDA82D354E62}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{074FD18F-BA33-4D6C-8CE6-DDA82D354E62}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{074FD18F-BA33-4D6C-8CE6-DDA82D354E62}.Release|Any CPU.Build.0 = Release|Any CPU
+		{44254ACC-5453-42A8-8CDA-2AB92BCA9F34}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{44254ACC-5453-42A8-8CDA-2AB92BCA9F34}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{44254ACC-5453-42A8-8CDA-2AB92BCA9F34}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{44254ACC-5453-42A8-8CDA-2AB92BCA9F34}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

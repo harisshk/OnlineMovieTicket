@@ -18,14 +18,15 @@
                     </div>
                     <div class="input-wrap">
                         @Html.Label("Password")
-                        @Html.PasswordFor(Model => Model.Password, htmlAttributes: new { @placeholder = "Password" })
+                        @Html.PasswordFor(Model => Model.Password, htmlAttributes: new { @placeholder = "Password" ,  @minlength="8", @maxlength="16"})
                         @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
                     </div>
                     <div class="input-wrap">
                         <button type="submit">Login</button>
                     </div>
                     <div class="input-wrap">
-                        <button type="button" value="Signup" onclick="location.href='@Url.Action("Signup", "Account")';return false;">Signup</button>
+                        <b>Don't have an account?</b>
+                        @Html.ActionLink("Signup","Signup", "Account",null,new { @cass = "signup-link" })
                     </div>
                 </form>
             </div>

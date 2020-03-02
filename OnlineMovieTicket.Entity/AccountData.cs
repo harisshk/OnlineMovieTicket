@@ -25,6 +25,7 @@ namespace OnlineMovieTicket.Entity
 
         [Required(ErrorMessage ="Password Required")]
         [DataType(DataType.Password)]
+        
         public string Password { get; set; }
 
 

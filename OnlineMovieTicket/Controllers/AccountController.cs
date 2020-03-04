@@ -1,33 +1,77 @@
-﻿using System.Web.Mvc;
+﻿using System.Linq;
+using System.Web.Mvc;
 using OnlineMovieTicket.Entity;
+using OnlineMovieTicket.Models;
 
 namespace OnlineMovieTicket.Controllers
 {
     public class AccountController : Controller
     {
-
         
+
         public ActionResult Login()
         {
             return View();
         }
         [HttpPost]
-        public ActionResult Login(AccountData accountData)
+        public ActionResult Login(LoginViewModel login)
         {
-            return View(accountData);
+            if (login.Name != null && login.Password != null)
+            {
+
+                using (DatabaseContext database = new DatabaseContext())
+                {
+                    var usr = database.signupViewModel.SingleOrDefault(model => model.Name == login.Name && model.Password == login.Password);
+                    if (usr != null )
+                    {
+                        Session["UserId"] = usr.UserId.ToString();
+                        Session["UserName"] = usr.Name.ToString();
+                        return RedirectToAction("Logged");
+                    }
+                    else
+                    {
+                        TempData["Msg"] = "Invalid credentials";
+                        return RedirectToAction("Login");
+                    }
+                }
+            }
+            return View();
         }
         public ActionResult Signup()
         {
             return View();
         }
         [HttpPost]
-        public ActionResult Signup(AccountData accountData)
+        public ActionResult Signup(SignupViewModel signup)
         {
-            return View(accountData);
+            if (ModelState.IsValid)
+            {
+
+
+                using (DatabaseContext database = new DatabaseContext())
+                {
+                    database.signupViewModel.Add(signup);
+                    database.SaveChanges();
+                }
+                ModelState.Clear();
+                return RedirectToAction("Login");
+            }
+            return View();
         }
         public ActionResult AboutUs()
         {
             return View("AboutUs");
+        }
+        public ActionResult Logged()
+        {
+            if (Session["UserId"]!= null)
+            {
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Login");
+            }
         }
     }
 }

@@ -1,0 +1,13 @@
+﻿@model OnlineMovieTicket.Models.SignupViewModel
+
+@{
+    ViewBag.Title = "Logged";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@if (Session["UserId"] != null)
+{
+
+<h2>Logged in</h2>
+}
+

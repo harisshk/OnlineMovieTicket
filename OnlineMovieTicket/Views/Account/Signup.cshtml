@@ -1,5 +1,4 @@
-﻿@model OnlineMovieTicket.Entity.AccountData
-
+﻿@model OnlineMovieTicket.Models.SignupViewModel
 @{
     ViewBag.Title = "Signup";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -13,11 +12,11 @@
             </div>
             <form>
                 <div class="input-wrap">
-                    <b>Username:</b>
-                    @Html.TextBoxFor(Model => Model.Name, htmlAttributes: new { @class = "signup-box-outer-input", @placeholder = "Username" })
+                    @Html.Label("Username")
+                    @Html.TextBoxFor(Model => Model.Name, htmlAttributes: new { @class="signup-box-outer-input", @placeholder = "Username" })
                     @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
                 </div>
-                <div>
+                @*<div>
                     <label for="dob"><b> Dob:</b></label>
                     &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                     @Html.DropDownList("date", new List<SelectListItem> {
@@ -56,8 +55,8 @@
               new SelectListItem { Text= "2003", Value = "06" },
 
               }
-            )
-                </div>
+            )</div>*@
+                
                 <br />
                 <div>
                     <b>Gender</b><br />

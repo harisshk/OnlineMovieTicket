@@ -1,4 +1,4 @@
-﻿@model OnlineMovieTicket.Entity.AccountData
+﻿@model OnlineMovieTicket.Models.SignupViewModel
 
 @{
     ViewBag.Title = "Login";
@@ -13,21 +13,23 @@
                 <form>
                     <div class="input-wrap">
                         @Html.Label("Username")
-                        @Html.TextBoxFor(Model => Model.Name, htmlAttributes: new { @placeholder = "Email or Phone number" })
+                        @Html.TextBoxFor(Model => Model.Name, htmlAttributes: new { @placeholder = "Username" })
                         @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
                     </div>
                     <div class="input-wrap">
                         @Html.Label("Password")
-                        @Html.PasswordFor(Model => Model.Password, htmlAttributes: new { @placeholder = "Password" ,  @minlength="8", @maxlength="16"})
+                        @Html.PasswordFor(Model => Model.Password, htmlAttributes: new { @placeholder = "Password"})
                         @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
                     </div>
                     <div class="input-wrap">
                         <button type="submit">Login</button>
                     </div>
+                    
                     <div class="input-wrap">
                         <b>Don't have an account?</b>
                         @Html.ActionLink("Signup","Signup", "Account",null,new { @cass = "signup-link" })
                     </div>
+
                 </form>
             </div>
         </div>

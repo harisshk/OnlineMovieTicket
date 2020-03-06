@@ -1,11 +1,12 @@
-    using System.Data.Entity;
-namespace OnlineMovieTicket.Models
-{
+//using OnlineMovieTicket.Entity;
+//using System.Data.Entity;
+//namespace OnlineMovieTicket.Models
+//{
 
-    public class DatabaseContext : DbContext
-    {
-        
+//    public class DatabaseContext : DbContext
+//    {
+//        public DatabaseContext() : base("DatabaseContext") { }
 
-        public DbSet<SignupViewModel> signupViewModel { get; set; }
-    }
-}
+//        public DbSet<Account> signupViewModel { get; set; }
+//    }
+//}

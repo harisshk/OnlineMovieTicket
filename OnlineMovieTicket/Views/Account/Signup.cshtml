@@ -57,7 +57,6 @@
               }
             )</div>*@
                 
-                <br />
                 <div>
                     <b>Gender</b><br />
                     <span> Male </span> @Html.RadioButton("Gender", "Male", false, new { @class = "radio-button" })
@@ -83,7 +82,7 @@
                     @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
                 </div>
                 <br />
-                <div class="input-wrap">
+                <div class="input-wrap-signup">
                     <button type="submit">Signup</button>
                 </div>
             </form>

@@ -7,8 +7,7 @@ namespace OnlineMovieTicket.Controllers
 {
     public class AccountController : Controller
     {
-        
-
+            
         public ActionResult Login()
         {
             return View();
@@ -19,9 +18,9 @@ namespace OnlineMovieTicket.Controllers
             if (login.Name != null && login.Password != null)
             {
 
-                using (DatabaseContext database = new DatabaseContext())
+                using (Entity.DatabaseContext database = new DatabaseContext())
                 {
-                    var usr = database.signupViewModel.SingleOrDefault(model => model.Name == login.Name && model.Password == login.Password);
+                    var usr = database.AccountDetail.SingleOrDefault(model => model.Name == login.Name && model.Password == login.Password);
                     if (usr != null )
                     {
                         Session["UserId"] = usr.UserId.ToString();
@@ -44,13 +43,20 @@ namespace OnlineMovieTicket.Controllers
         [HttpPost]
         public ActionResult Signup(SignupViewModel signup)
         {
+                      
+
             if (ModelState.IsValid)
             {
-
-
+                Account account = new Account();
+                account.Name = signup.Name;
+                account.Phone = signup.Phone;
+                account.Email = signup.Email;
+                account.Password = signup.Password;
+                account.Gender = signup.Gender;
+                        
                 using (DatabaseContext database = new DatabaseContext())
                 {
-                    database.signupViewModel.Add(signup);
+                    database.AccountDetail.Add(account);
                     database.SaveChanges();
                 }
                 ModelState.Clear();

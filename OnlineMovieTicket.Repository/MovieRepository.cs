@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Data.Entity;
 namespace OnlineMovieTicket.Entity
 {
     public class MovieRepository
@@ -35,5 +36,11 @@ namespace OnlineMovieTicket.Entity
             updateMovie.Price = movie.Price;
             updateMovie.MovieName = movie.MovieName;
         }
+    }
+    public class DatabaseContext : DbContext
+    {
+
+        public DatabaseContext() : base("DatabaseContext") { }
+        public DbSet<Account> AccountDetail { get; set; }
     }
 }

@@ -1,8 +1,13 @@
-﻿namespace OnlineMovieTicket.Entity
+﻿
+using System.ComponentModel.DataAnnotations;
+
+namespace OnlineMovieTicket.Entity
 {
     public class Account
     {
-       
+        [Key]
+        public int UserId { get; set; }
+
         public string Name { get; set; }
 
         public string Gender { get; set; }
@@ -10,8 +15,6 @@
         
         public string Email { get; set; }
 
-        
-        public string DateOfBirth { get; set; }
 
         public string Phone { get; set; }
 
@@ -23,7 +26,6 @@
         {
             this.Name = name;
             this.Gender = gender;
-            this.DateOfBirth = dob;
             this.Email = email;
             this.Password = password;
             this.Phone = phone;

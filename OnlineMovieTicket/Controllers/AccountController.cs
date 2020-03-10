@@ -3,6 +3,7 @@ using System.Web.Mvc;
 using OnlineMovieTicket.Entity;
 using OnlineMovieTicket.Models;
 
+
 namespace OnlineMovieTicket.Controllers
 {
     public class AccountController : Controller
@@ -13,6 +14,7 @@ namespace OnlineMovieTicket.Controllers
             return View();
         }
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Login(LoginViewModel login)
         {
             if (login.Name != null && login.Password != null)
@@ -25,7 +27,7 @@ namespace OnlineMovieTicket.Controllers
                     {
                         Session["UserId"] = usr.UserId.ToString();
                         Session["UserName"] = usr.Name.ToString();
-                        return RedirectToAction("Logged");
+                        return RedirectToAction("Index","Movie");
                     }
                     else
                     {
@@ -41,10 +43,9 @@ namespace OnlineMovieTicket.Controllers
             return View();
         }
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Signup(SignupViewModel signup)
         {
-                      
-
             if (ModelState.IsValid)
             {
                 Account account = new Account();
@@ -53,7 +54,7 @@ namespace OnlineMovieTicket.Controllers
                 account.Email = signup.Email;
                 account.Password = signup.Password;
                 account.Gender = signup.Gender;
-                        
+
                 using (DatabaseContext database = new DatabaseContext())
                 {
                     database.AccountDetail.Add(account);

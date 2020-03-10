@@ -6,6 +6,7 @@
 }
 @using (Html.BeginForm("Login", "Account", FormMethod.Post))
 {
+    @Html.AntiForgeryToken()
     <body class="wrapper">
         <div class="login-box-outer">
             <div>

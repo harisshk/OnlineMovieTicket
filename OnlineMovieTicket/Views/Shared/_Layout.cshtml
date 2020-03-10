@@ -10,9 +10,14 @@
 </head>
 <body>
     <header class="master">
+        <div>
         @Html.ActionLink("Home", "Index", "Movie", null, new { @class = "masterbtn" })
-        @Html.ActionLink("Login", "Login", "Account", null, new { @class = "masterbtn" }) 
         @Html.ActionLink("AboutUs", "AboutUs", "Account", null, new { @class = "masterbtn" })
+
+        <div class="master-right">
+        @Html.ActionLink("Login", "Login", "Account", null, new { @class = "masterbtn"}) 
+        </div>
+        </div>
     </header>
     <br />
     <br />

@@ -16,5 +16,6 @@ namespace OnlineMovieTicket.Entity
         [Required(AllowEmptyStrings  = false, ErrorMessage = "Enter the price ")]
         public double Price { get; set; }
 
+
     }
 }

@@ -15,9 +15,9 @@ namespace OnlineMovieTicket.BL
         {
             movieRepository.AddMovie(movie);
         }
-        //public void EditMovie()
-        //{
-        //    movieRepository.EditMovie();
-        //}
+        public void EditMovie(Movie movie)
+        {
+            movieRepository.EditMovie(movie);
+        }
     }
 }

@@ -66,16 +66,6 @@ namespace OnlineMovieTicket.Controllers
         {
             return View("AboutUs");
         }
-        public ActionResult Logged()
-        {
-            if (Session["UserId"]!= null)
-            {
-                return View();
-            }
-            else
-            {
-                return RedirectToAction("Login");
-            }
-        }
+        
     }
 }

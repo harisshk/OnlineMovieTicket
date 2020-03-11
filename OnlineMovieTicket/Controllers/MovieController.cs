@@ -60,10 +60,20 @@ namespace OnlineMovieTicket.Controllers
             
                 return RedirectToAction("Index");
             
-        } 
-        //public ActionResult Edit()
-        //{
+        }
+        public ActionResult Edit(MovieModel movieModel)
+        {
 
-        //}
+            Movie movie = new Movie
+            {
+                MovieId = movieModel.MovieId,
+                MovieName = movieModel.MovieName,
+                ShowTime = movieModel.ShowTime,
+                Price = movieModel.Price
+            };
+            movieBL.EditMovie(movie);
+            TempData["Message"] = "Updated";
+            return RedirectToAction("Index", "Movie");
+        }
     }
 }

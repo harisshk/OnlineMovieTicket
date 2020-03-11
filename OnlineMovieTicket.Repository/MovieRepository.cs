@@ -23,12 +23,11 @@ namespace OnlineMovieTicket.Repository
                 database.SaveChanges();
             }
         }
-        public void EditMovie(int movieId)
+        public void EditMovie(Movie movie)
         {
             using (DatabaseContext database = new DatabaseContext())
             {
-                Movie movie = database.MovieDetails.Find(movieId);
-                database.MovieDetails.Remove(movie);
+                database.Entry(movie).State = EntityState.Modified;
                 database.SaveChanges();
             }
         }

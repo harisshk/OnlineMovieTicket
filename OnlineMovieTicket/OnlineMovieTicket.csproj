@@ -184,7 +184,6 @@
     <Content Include="Views\Movie\Delete.cshtml" />
     <Content Include="Views\Movie\Edit.cshtml" />
     <Content Include="Views\Account\AboutUs.cshtml" />
-    <Content Include="Views\Account\Logged.cshtml" />
     <Content Include="Views\Movie\Index.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
   </ItemGroup>

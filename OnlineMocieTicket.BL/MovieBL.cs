@@ -1,17 +1,22 @@
 ﻿using OnlineMovieTicket.Entity;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace OnlineMovieTicket.BL
 {
     public class MovieBL
     {
-        public void DeleteBl(int id)
+        MovieRepository movieRepository = new MovieRepository();
+
+        public void DeleteMovie(int id)
         {
-            MovieRepository.DeleteMovie(id);
+            movieRepository.DeleteMovie(id);
         } 
+        public void CreateMovie(Movie movie)
+        {
+            movieRepository.AddMovie(movie);
+        }
+        public void EditMovie()
+        {
+            movieRepository.EditMovie();
+        }
     }
 }

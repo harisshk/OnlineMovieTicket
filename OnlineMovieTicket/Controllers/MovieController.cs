@@ -10,10 +10,10 @@ namespace OnlineMovieTicket.Controllers
 {
     public class MovieController : Controller
     {
-        // GET: Index
-        MovieBL movieBL;
+        
+        public MovieBL movieBL;
 
-        MovieRepository movieRepository;
+        public MovieRepository movieRepository;
        
         public MovieController()
         {
@@ -45,34 +45,23 @@ namespace OnlineMovieTicket.Controllers
                 movie.ShowTime = movieModel.ShowTime;
                 movie.Price = movieModel.Price;
 
-                using (DatabaseContext database = new DatabaseContext())
-                {
-                    database.MovieDetails.Add(movie);
-                    database.SaveChanges();
-                }
+                movieBL.CreateMovie(movie);
                 ModelState.Clear();
                 return RedirectToAction("Index","Movie");
             }
             return View();
         }
+
         public ActionResult Delete(int Id)
         {
-            movieBL.DeleteBl(Id);
+            movieBL.DeleteMovie(Id);
             
                 return RedirectToAction("Index");
             
-        }
-        public ActionResult Edit(int id)
+        } 
+        public ActionResult Edit()
         {
-            Movie movie = movieRepository.GetMovieId(id);
-            return View(movie);
-        }
-        [HttpPost]
-        public ActionResult Update(Movie movie)
-        {
-            movieRepository.EditMovieDetails(movie);
-            TempData["Message"] = "Movie Details Edited successfully!!";
-            return RedirectToAction("Index");
+
         }
     }
 }

@@ -4,21 +4,17 @@ namespace OnlineMovieTicket.Entity
 {
     public class MovieRepository
     {
-        public static List<Movie> movies = new List<Movie>();
-        
-        public IEnumerable<Movie> GetMovieDetails()
-        {
-            return movies;
-        }
+       
         public void AddMovie(Movie movie)
         {
-            movies.Add(movie);
+            using (DatabaseContext database = new DatabaseContext())
+            {
+                database.MovieDetails.Add(movie);
+                database.SaveChanges();
+            }
         }
-        public Movie GetMovieId(int movieId)
-        {
-            return movies.Find(id => id.MovieId == movieId);
-        }
-        public static void DeleteMovie(int movieId)
+      
+        public void DeleteMovie(int movieId)
         {
             using (DatabaseContext database = new DatabaseContext())
             {
@@ -26,14 +22,15 @@ namespace OnlineMovieTicket.Entity
                 database.MovieDetails.Remove(movie);
                 database.SaveChanges();
             }
-
         }
-            public void EditMovieDetails(Movie movie)
+        public void EditMovie(int movieId)
         {
-            Movie updateMovie = GetMovieId(movie.MovieId);
-            updateMovie.ShowTime = movie.ShowTime;
-            updateMovie.Price = movie.Price;
-            updateMovie.MovieName = movie.MovieName;
+            using (DatabaseContext database = new DatabaseContext())
+            {
+                Movie movie = database.MovieDetails.Find(movieId);
+                database.MovieDetails.Remove(movie);
+                database.SaveChanges();
+            }
         }
     }
     public class DatabaseContext : DbContext

@@ -1,10 +1,10 @@
-﻿using OnlineMovieTicket.Entity;
+﻿using OnlineMovieTicket.BL;
+using OnlineMovieTicket.Entity;
 using OnlineMovieTicket.Models;
+using OnlineMovieTicket.Repository;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
-using OnlineMovieTicket.BL;
-
 
 namespace OnlineMovieTicket.Controllers
 {
@@ -39,11 +39,13 @@ namespace OnlineMovieTicket.Controllers
             if (ModelState.IsValid)
             {
 
-                Movie movie = new Movie();
-                movie.MovieId = movieModel.MovieId;
-                movie.MovieName = movieModel.MovieName;
-                movie.ShowTime = movieModel.ShowTime;
-                movie.Price = movieModel.Price;
+                Movie movie = new Movie
+                {
+                    MovieId = movieModel.MovieId,
+                    MovieName = movieModel.MovieName,
+                    ShowTime = movieModel.ShowTime,
+                    Price = movieModel.Price
+                };
 
                 movieBL.CreateMovie(movie);
                 ModelState.Clear();
@@ -59,9 +61,9 @@ namespace OnlineMovieTicket.Controllers
                 return RedirectToAction("Index");
             
         } 
-        public ActionResult Edit()
-        {
+        //public ActionResult Edit()
+        //{
 
-        }
+        //}
     }
 }

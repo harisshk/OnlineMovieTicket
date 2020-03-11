@@ -205,6 +205,10 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\OnlineMovieTicket.BL\OnlineMovieTicket.BL.csproj">
+      <Project>{507FB0DD-B597-4D45-85A2-5CC177408BF8}</Project>
+      <Name>OnlineMovieTicket.BL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\OnlineMovieTicket.Entity\OnlineMovieTicket.Entity.csproj">
       <Project>{b01ef6f0-3052-415a-aae2-f4e1054b4b1c}</Project>
       <Name>OnlineMovieTicket.Entity</Name>

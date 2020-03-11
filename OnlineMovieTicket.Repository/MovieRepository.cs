@@ -1,6 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using OnlineMovieTicket.Entity;
 using System.Data.Entity;
-namespace OnlineMovieTicket.Entity
+namespace OnlineMovieTicket.Repository
 {
     public class MovieRepository
     {

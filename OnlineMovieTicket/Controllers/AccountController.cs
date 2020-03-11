@@ -1,14 +1,14 @@
-﻿using System.Linq;
-using System.Web.Mvc;
+﻿using OnlineMovieTicket.BL;
 using OnlineMovieTicket.Entity;
 using OnlineMovieTicket.Models;
-
+using System.Web.Mvc;
 
 namespace OnlineMovieTicket.Controllers
 {
     public class AccountController : Controller
     {
-            
+        public AccountBL accountBL = new BL.AccountBL();
+
         public ActionResult Login()
         {
             return View();
@@ -19,21 +19,19 @@ namespace OnlineMovieTicket.Controllers
         {
             if (login.Name != null && login.Password != null)
             {
-
-                using (Entity.DatabaseContext database = new DatabaseContext())
+                Account account = new Account
                 {
-                    var usr = database.AccountDetail.SingleOrDefault(model => model.Name == login.Name && model.Password == login.Password);
-                    if (usr != null )
-                    {
-                        Session["UserId"] = usr.UserId.ToString();
-                        Session["UserName"] = usr.Name.ToString();
-                        return RedirectToAction("Index","Movie");
-                    }
-                    else
-                    {
-                        TempData["Msg"] = "Invalid credentials";
-                        return RedirectToAction("Login");
-                    }
+                    Name = login.Name,
+                    Password = login.Password
+                };
+
+                if (accountBL.Login(account))
+                {
+                    return RedirectToAction("Index", "Movie");
+                }
+                else
+                {
+                    return RedirectToAction("Login");
                 }
             }
             return View();
@@ -48,18 +46,17 @@ namespace OnlineMovieTicket.Controllers
         {
             if (ModelState.IsValid)
             {
-                Account account = new Account();
-                account.Name = signup.Name;
-                account.Phone = signup.Phone;
-                account.Email = signup.Email;
-                account.Password = signup.Password;
-                account.Gender = signup.Gender;
-
-                using (DatabaseContext database = new DatabaseContext())
+                Account account = new Account
                 {
-                    database.AccountDetail.Add(account);
-                    database.SaveChanges();
-                }
+                    Name = signup.Name,
+                    Phone = signup.Phone,
+                    Email = signup.Email,
+                    Password = signup.Password,
+                    Gender = signup.Gender
+                };
+
+                accountBL.Signup(account);
+                
                 ModelState.Clear();
                 return RedirectToAction("Login");
             }

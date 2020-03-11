@@ -1,20 +1,32 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using OnlineMovieTicket.Entity;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 namespace OnlineMovieTicket.Repository
 {
-    class AccountRepository
+    public class AccountRepository
     {
-        public void Signup()
+        public void Signup(Account account)
         {
-
+            using (DatabaseContext database = new DatabaseContext())
+            {
+                database.AccountDetail.Add(account);
+                database.SaveChanges();
+            }
         }
-        public void Login()
+        public bool Login(Account account)
         {
+            using (DatabaseContext database = new DatabaseContext())
+            {
+                var usr = database.AccountDetail.SingleOrDefault(model => model.Name == account.Name && model.Password == account.Password);
+                if (usr != null)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
 
+                }
+            }
         }
     }
 }

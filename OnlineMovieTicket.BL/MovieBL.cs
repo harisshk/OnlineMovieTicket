@@ -1,4 +1,5 @@
 ﻿using OnlineMovieTicket.Entity;
+using OnlineMovieTicket.Repository;
 
 namespace OnlineMovieTicket.BL
 {
@@ -14,9 +15,9 @@ namespace OnlineMovieTicket.BL
         {
             movieRepository.AddMovie(movie);
         }
-        public void EditMovie()
-        {
-            movieRepository.EditMovie();
-        }
+        //public void EditMovie()
+        //{
+        //    movieRepository.EditMovie();
+        //}
     }
 }

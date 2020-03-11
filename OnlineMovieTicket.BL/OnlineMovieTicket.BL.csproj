@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AccountBL.cs" />
     <Compile Include="MovieBL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

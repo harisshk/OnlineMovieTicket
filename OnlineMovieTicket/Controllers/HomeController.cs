@@ -1,4 +1,5 @@
 ﻿using OnlineMovieTicket.Entity;
+using OnlineMovieTicket.Repository;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;

@@ -1,4 +1,4 @@
-﻿@model OnlineMovieTicket.Models.SignupViewModel
+﻿@model OnlineMovieTicket.Models.LoginViewModel
 
 @{
     ViewBag.Title = "Login";
@@ -21,6 +21,9 @@
                         @Html.Label("Password")
                         @Html.PasswordFor(Model => Model.Password, htmlAttributes: new { @placeholder = "Password"})
                         @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="input-wrap-red">
+                        @TempData["LoginErrorMessage"]
                     </div>
                     <div class="input-wrap">
                         <button type="submit">Login</button>

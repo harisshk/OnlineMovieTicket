@@ -1,32 +1,27 @@
 ﻿using OnlineMovieTicket.BL;
 using OnlineMovieTicket.Entity;
 using OnlineMovieTicket.Models;
-using OnlineMovieTicket.Repository;
 using System.Collections.Generic;
-using System.Linq;
 using System.Web.Mvc;
 
 namespace OnlineMovieTicket.Controllers
 {
-    public class MovieController : Controller
+    public class AdminController : Controller
     {
         
         public MovieBL movieBL;
 
-        public MovieRepository movieRepository;
        
-        public MovieController()
+        public AdminController()
         {
             movieBL = new MovieBL();
-            movieRepository = new MovieRepository();
         }
-        public ActionResult Index()
+
+       
+        public  ActionResult Index()
         {
-            using (DatabaseContext database = new DatabaseContext())
-            {
-                List<Movie> movies = database.MovieDetails.ToList();
-                return View(movies);
-            }
+            var movies = movieBL.Index();
+            return View(movies);
         }
         public ActionResult Create()
         {
@@ -61,7 +56,17 @@ namespace OnlineMovieTicket.Controllers
                 return RedirectToAction("Index");
             
         }
-        public ActionResult Edit(MovieModel movieModel)
+
+        public ActionResult Edit(int id)
+        {
+            Movie movie = movieBL.Edit(id);
+
+        return View(movie);
+          
+        }
+        [HttpPost]
+        
+        public ActionResult EditMovie(MovieModel movieModel)
         {
 
             Movie movie = new Movie
@@ -73,7 +78,8 @@ namespace OnlineMovieTicket.Controllers
             };
             movieBL.EditMovie(movie);
             TempData["Message"] = "Updated";
-            return RedirectToAction("Index", "Movie");
+            return RedirectToAction("Index");
         }
+
     }
 }

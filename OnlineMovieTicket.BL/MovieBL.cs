@@ -1,5 +1,6 @@
 ﻿using OnlineMovieTicket.Entity;
 using OnlineMovieTicket.Repository;
+using System.Collections;
 
 namespace OnlineMovieTicket.BL
 {
@@ -7,6 +8,10 @@ namespace OnlineMovieTicket.BL
     {
         public MovieRepository movieRepository = new MovieRepository();
 
+        public IEnumerable Index()
+        {
+            return movieRepository.Index();
+        }
         public void DeleteMovie(int id)
         {
             movieRepository.DeleteMovie(id);
@@ -18,6 +23,12 @@ namespace OnlineMovieTicket.BL
         public void EditMovie(Movie movie)
         {
             movieRepository.EditMovie(movie);
+
+        }
+        public Movie Edit(int id)
+        {
+            return movieRepository.Edit(id);
+
         }
     }
 }

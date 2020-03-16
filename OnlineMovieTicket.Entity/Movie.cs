@@ -3,17 +3,17 @@ namespace OnlineMovieTicket.Entity
 {
     public class Movie
     {
-        [Required  (AllowEmptyStrings =false, ErrorMessage ="Enter the movie name ")]
+        [Required]
         [Display(Name="Movie Name")]
         public string MovieName { get; set; }
 
-        [Required(AllowEmptyStrings = false, ErrorMessage = "Enter the show time ")]
+        [Required]
         public string ShowTime { get; set; }
 
-        [Required(AllowEmptyStrings = false, ErrorMessage = "Enter the movie id ")]
+        [Required]
         public int MovieId { get; set; }
 
-        [Required(AllowEmptyStrings  = false, ErrorMessage = "Enter the price ")]
+        [Required]
         public double Price { get; set; }
 
 

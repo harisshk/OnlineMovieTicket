@@ -3,6 +3,11 @@
 
 @{
     ViewBag.Title = "Create";
+     Layout = "~/Views/Shared/_LayoutSignout.cshtml";
+    if (Session["UserId"] == null)
+    {
+        Response.Redirect("~/Account/Login");
+    }
 }
 
 @using (Html.BeginForm("Delete", "Movie", FormMethod.Post))
@@ -49,3 +54,4 @@
             </td>
         </tr>
     </table>
+}

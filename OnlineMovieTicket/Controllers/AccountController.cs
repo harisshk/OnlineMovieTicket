@@ -2,7 +2,7 @@
 using OnlineMovieTicket.Entity;
 using OnlineMovieTicket.Models;
 using System.Web.Mvc;
-
+using System.Web.Security;
 namespace OnlineMovieTicket.Controllers
 {
     public class AccountController : Controller
@@ -17,23 +17,27 @@ namespace OnlineMovieTicket.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Login(LoginViewModel login)
         {
-            if (login.Name != null && login.Password != null)
+            if (ModelState.IsValid)
             {
                 Account account = new Account
                 {
                     Name = login.Name,
                     Password = login.Password
                 };
-
-                if (accountBL.Login(account))
+                Account accountDetails = accountBL.Login(account);
+                if (accountDetails != null)
                 {
+
+                    Session["UserId"] = accountDetails.UserId;
                     return RedirectToAction("Index", "Movie");
                 }
-                else
-                {
-                    return RedirectToAction("Login");
-                }
+                //else
+                //{
+                   TempData["LoginErrorMessage"] = "Invalid Username or Password";
+                //    return RedirectToAction("Login");
+                //}
             }
+           // TempData["LoginErrorMessage"] = "Invalid Username or Password";
             return View();
         }
         public ActionResult Signup()
@@ -57,7 +61,7 @@ namespace OnlineMovieTicket.Controllers
 
                 accountBL.Signup(account);
                 
-                ModelState.Clear();
+               // ModelState.Clear();
                 return RedirectToAction("Login");
             }
             return View();
@@ -67,5 +71,10 @@ namespace OnlineMovieTicket.Controllers
             return View("AboutUs");
         }
         
+        public ActionResult Logout()
+        {
+            Session.Abandon();
+            return RedirectToAction("Index", "Home");
+        }
     }
 }

@@ -3,10 +3,12 @@ namespace OnlineMovieTicket.Models
 {
     public class LoginViewModel
     {
-        [Required]
+        [Required]      
         public string Name { get; set; }
 
         [Required]
         public string Password { get; set; }
+
+        
     }
 }

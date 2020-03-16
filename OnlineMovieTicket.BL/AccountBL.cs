@@ -1,4 +1,5 @@
-﻿using OnlineMovieTicket.Entity;
+﻿using OnlineMovieTicket.Entity; 
+
 using OnlineMovieTicket.Repository;
 
 namespace OnlineMovieTicket.BL
@@ -11,17 +12,13 @@ namespace OnlineMovieTicket.BL
         {
             accountRepository.Signup(account);
         }
-        public bool Login(Account account)
+        public Account Login(Account account)
         {
-            if (accountRepository.Login(account))
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            return accountRepository.Login(account);
+            
             
         }
+       
+        
     }
 }

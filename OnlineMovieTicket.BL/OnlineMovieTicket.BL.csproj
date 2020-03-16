@@ -51,7 +51,7 @@
       <Name>OnlineMovieTicket.Entity</Name>
     </ProjectReference>
     <ProjectReference Include="..\OnlineMovieTicket.Repository\OnlineMovieTicket.DAL.csproj">
-      <Project>{074FD18F-BA33-4D6C-8CE6-DDA82D354E62}</Project>
+      <Project>{074fd18f-ba33-4d6c-8ce6-dda82d354e62}</Project>
       <Name>OnlineMovieTicket.DAL</Name>
     </ProjectReference>
   </ItemGroup>

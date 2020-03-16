@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OnlineMocieTicket.BL
+namespace OnlineMovieTicket.Repository
 {
-    class AccountBL
+    class CategoryRepository
     {
+
     }
 }

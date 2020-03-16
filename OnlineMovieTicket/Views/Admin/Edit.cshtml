@@ -2,28 +2,33 @@
 
 @{
     ViewBag.Title = "Edit";
+     Layout = "~/Views/Shared/_LayoutSignout.cshtml";
+    if (Session["UserId"] == null)
+    {
+        Response.Redirect("~/Account/Login");
+    }
 }
 
 
 
 <h2>Edit</h2>
 
-@using (Html.BeginForm("Update", "Movie", FormMethod.Post))
+@using (Html.BeginForm("EditMovie", "Movie", FormMethod.Post))
 {
     @Html.HiddenFor(Model => Model.MovieId);
     <table>
         <tr>
             <td>
-                @Html.DisplayFor(Model => Model.MovieName)
-            </td>
-            <td>
+                Movie Name:
+            </td>            <td>
                 @Html.TextBoxFor(Model => Model.MovieName)
             </td>
         </tr>
 
+
         <tr>
             <td>
-                Source City:
+                ShowTime:
             </td>
             <td>
                 @Html.TextBoxFor(Model => Model.ShowTime)
@@ -43,7 +48,7 @@
                 <input type="submit" />
             </td>
             <td>
-                <a href="~/Movie/Index">Back</a>
+                <a href="~/Views/Movie/Index.cshtml">Back</a>
             </td>
         </tr>
     </table>

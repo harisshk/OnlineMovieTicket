@@ -6,13 +6,13 @@ using System.Web.Mvc;
 
 namespace OnlineMovieTicket.Controllers
 {
-    public class AdminController : Controller
+    public class MovieController : Controller
     {
         
         public MovieBL movieBL;
 
        
-        public AdminController()
+        public MovieController()
         {
             movieBL = new MovieBL();
         }

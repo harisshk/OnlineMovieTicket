@@ -5,6 +5,7 @@ using System;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
+using AutoMapper;
 namespace OnlineMovieTicket.Controllers
 {
     public class AccountController : Controller
@@ -21,16 +22,15 @@ namespace OnlineMovieTicket.Controllers
         {
             if (ModelState.IsValid)
             {
-                Account account = new Account
-                {
-                    Name = login.Name,
-                    Password = login.Password
-                };
+                var mapAccount = new MapperConfiguration(cfg => { cfg.CreateMap<LoginViewModel, Account>(); });
+                IMapper mapper = mapAccount.CreateMapper();
+                var account = mapper.Map<LoginViewModel, Account>(login);
+               
                 Account accountDetails = accountBL.Login(account);
                 if (accountDetails != null)
                 {
                     FormsAuthentication.SetAuthCookie(accountDetails.Name, false);
-                    var authTicket = new FormsAuthenticationTicket(1, accountDetails.Email, DateTime.Now, DateTime.Now.AddMinutes(20), false, accountDetails.Role);
+                    var authTicket = new FormsAuthenticationTicket(1, accountDetails.Name, DateTime.Now, DateTime.Now.AddMinutes(20), false, accountDetails.Role);
                     string encryptedTicket = FormsAuthentication.Encrypt(authTicket);
                     var authCookie = new HttpCookie(FormsAuthentication.FormsCookieName, encryptedTicket);
                     HttpContext.Response.Cookies.Add(authCookie);
@@ -51,21 +51,18 @@ namespace OnlineMovieTicket.Controllers
         {
             return View();
         }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Signup(SignupViewModel signup)
         {
             if (ModelState.IsValid)
             {
-                Account account = new Account
-                {
-                    Name = signup.Name,
-                    Phone = signup.Phone,
-                    Email = signup.Email,
-                    Password = signup.Password,
-                    Gender = signup.Gender,
-                    Role = "User"
-                };
+                var mapAccount = new MapperConfiguration(cfg=>{ cfg.CreateMap<SignupViewModel, Account>(); });
+                IMapper mapper = mapAccount.CreateMapper();
+                var account = mapper.Map<SignupViewModel, Account>(signup);
+                account.Role = "User";
+                
 
                 accountBL.Signup(account);
                 
@@ -75,6 +72,7 @@ namespace OnlineMovieTicket.Controllers
             return View();
         }
        
+
         public ActionResult LogOff()
         {
             //AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);

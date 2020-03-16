@@ -1,4 +1,5 @@
-﻿using OnlineMovieTicket.BL;
+﻿using AutoMapper;
+using OnlineMovieTicket.BL;
 using OnlineMovieTicket.Entity;
 using OnlineMovieTicket.Models;
 using System.Web.Mvc;
@@ -33,17 +34,9 @@ namespace OnlineMovieTicket.Controllers
 
             if (ModelState.IsValid)
             {
-
-                Movie movie = new Movie
-                {
-                    MovieId = movieModel.MovieId,
-                    MovieName = movieModel.MovieName,
-                    ShowTimeMorning = movieModel.ShowTimeMorning,
-                    ShowTimeAfternoon = movieModel.ShowTimeAfternoon,
-                    ShowTimeEvening = movieModel.ShowTimeEvening,
-                    Price = movieModel.Price,
-                    Duration = movieModel.Duration
-                };
+                var mapMovie = new MapperConfiguration(cfg => { cfg.CreateMap<MovieModel, Movie>(); });
+                IMapper mapper = mapMovie.CreateMapper();
+                var movie = mapper.Map<MovieModel, Movie>(movieModel);
 
                 movieBL.CreateMovie(movie);
                 return RedirectToAction("Index","Movie");
@@ -70,17 +63,9 @@ namespace OnlineMovieTicket.Controllers
         
         public ActionResult EditMovie(MovieModel movieModel)
         {
-
-            Movie movie = new Movie
-            {
-                MovieId = movieModel.MovieId,
-                MovieName = movieModel.MovieName,
-                ShowTimeMorning = movieModel.ShowTimeMorning,
-                ShowTimeAfternoon = movieModel.ShowTimeAfternoon,
-                ShowTimeEvening = movieModel.ShowTimeEvening,
-                Duration = movieModel.Duration,
-                Price = movieModel.Price
-            };
+            var mapMovie = new MapperConfiguration(cfg => { cfg.CreateMap<MovieModel, Movie>(); });
+            IMapper mapper = mapMovie.CreateMapper();
+            var movie = mapper.Map<MovieModel, Movie>(movieModel);
             movieBL.EditMovie(movie);
             TempData["Message"] = "Updated";
             return RedirectToAction("Index");

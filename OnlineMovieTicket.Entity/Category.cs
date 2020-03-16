@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace OnlineMovieTicket.Entity
 {
-    class Category
+    public class Category
     {
         [Key]
         public int CategoryId { get; set; }

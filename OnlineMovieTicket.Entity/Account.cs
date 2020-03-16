@@ -1,4 +1,4 @@
-﻿
+﻿    
 using System.ComponentModel.DataAnnotations;
 
 namespace OnlineMovieTicket.Entity
@@ -20,13 +20,10 @@ namespace OnlineMovieTicket.Entity
 
        
         public string Password { get; set; }
+        public string Role { get; set; }
 
 
        
-        public Account()
-        {
-
-        }
-
+     
     }
 }

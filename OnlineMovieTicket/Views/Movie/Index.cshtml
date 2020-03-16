@@ -1,16 +1,11 @@
 ﻿
 @{
     ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_LayoutSignout.cshtml";
-    if (Session["UserId"] == null)
-    {
-        Response.Redirect("~/Account/Login");
-    }
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
 }
 
 <h2>Home</h2>
-
-@Html.ActionLink("Create new Movie Details", "Create")
 <br />
 @if (TempData["Message"] != null)
 {
@@ -20,21 +15,30 @@
     <tr>
         <th>Movie Name</th>
         <th>Movie Id</th>
-        <th>Show Time</th>
-        <th>Price</th>
-        <th>Action</th>
+        <td>ShowTimeMorning</td>
+        <td>ShowTimeAfternoon</td>
+        <td>ShowTimeEvening</td>
+        <td>Duration</td>
+        <td>Price</td>
     </tr>
     @foreach (OnlineMovieTicket.Entity.Movie movie in @Model)
     {
         <tr>
             <td>@movie.MovieName</td>
             <td>@movie.MovieId</td>
-            <td>@movie.ShowTime</td>
+            <td>@movie.ShowTimeMorning</td>
+            <td>@movie.ShowTimeAfternoon</td>
+            <td>@movie.ShowTimeEvening</td>
+            <td>@movie.Duration</td>
             <td>@movie.Price</td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = movie.MovieId })
-                @Html.ActionLink("Delete", "Delete", new { id = movie.MovieId })
-            </td>
+            @if (HttpContext.Current.User.IsInRole("Admin"))
+            {
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = movie.MovieId })
+                    @Html.ActionLink("Delete", "Delete", new { id = movie.MovieId })
+                </td>
+            }
+
         </tr>
     }
 </table>

@@ -11,12 +11,23 @@
 <body>
     <header class="master">
         <div>
-        @Html.ActionLink("Home", "Index", "Home", null, new { @class = "masterbtn" })
-        @Html.ActionLink("AboutUs", "AboutUs", "Account", null, new { @class = "masterbtn" })
+            @Html.ActionLink("Home", "Index", "Movie", null, new { @class = "masterbtn" })
+            @Html.ActionLink("AboutUs", "AboutUs", "Home", null, new { @class = "masterbtn" })
+            @if (System.Web.HttpContext.Current.User.IsInRole("Admin"))
+            {
+                @Html.ActionLink("Add Movie", "Create", "Movie", null, new { @class = "masterbtn" })
+            }
+            <div class="master-right">
+                @if (System.Web.HttpContext.Current.User.Identity.IsAuthenticated)
+                {
+                    @Html.ActionLink("Logout", "LogOff", "Account", null, new { @class = "masterbtn" })
 
-        <div class="master-right">
-        @Html.ActionLink("Login", "Login", "Account", null, new { @class = "masterbtn"}) 
-        </div>
+                }
+                else
+                {
+                    @Html.ActionLink("Login", "Login", "Account", null, new { @class = "masterbtn" })
+                }
+            </div>
         </div>
     </header>
     <br />

@@ -1,6 +1,8 @@
 ﻿using OnlineMovieTicket.BL;
 using OnlineMovieTicket.Entity;
 using OnlineMovieTicket.Models;
+using System;
+using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
 namespace OnlineMovieTicket.Controllers
@@ -27,17 +29,22 @@ namespace OnlineMovieTicket.Controllers
                 Account accountDetails = accountBL.Login(account);
                 if (accountDetails != null)
                 {
-
-                    Session["UserId"] = accountDetails.UserId;
+                    FormsAuthentication.SetAuthCookie(accountDetails.Name, false);
+                    var authTicket = new FormsAuthenticationTicket(1, accountDetails.Email, DateTime.Now, DateTime.Now.AddMinutes(20), false, accountDetails.Role);
+                    string encryptedTicket = FormsAuthentication.Encrypt(authTicket);
+                    var authCookie = new HttpCookie(FormsAuthentication.FormsCookieName, encryptedTicket);
+                    HttpContext.Response.Cookies.Add(authCookie);
                     return RedirectToAction("Index", "Movie");
+
+                    //Session["UserId"] = accountDetails.UserId;
+                    //return RedirectToAction("Index", "Movie");
                 }
-                //else
-                //{
-                   TempData["LoginErrorMessage"] = "Invalid Username or Password";
-                //    return RedirectToAction("Login");
+                else
+                      TempData["LoginErrorMessage"] = "Invalid Username or Password";
+              
                 //}
             }
-           // TempData["LoginErrorMessage"] = "Invalid Username or Password";
+          
             return View();
         }
         public ActionResult Signup()
@@ -56,7 +63,8 @@ namespace OnlineMovieTicket.Controllers
                     Phone = signup.Phone,
                     Email = signup.Email,
                     Password = signup.Password,
-                    Gender = signup.Gender
+                    Gender = signup.Gender,
+                    Role = "User"
                 };
 
                 accountBL.Signup(account);
@@ -66,15 +74,12 @@ namespace OnlineMovieTicket.Controllers
             }
             return View();
         }
-        public ActionResult AboutUs()
+       
+        public ActionResult LogOff()
         {
-            return View("AboutUs");
-        }
-        
-        public ActionResult Logout()
-        {
-            Session.Abandon();
-            return RedirectToAction("Index", "Home");
+            //AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
+            FormsAuthentication.SignOut();
+            return RedirectToAction("Index", "Movie");
         }
     }
 }

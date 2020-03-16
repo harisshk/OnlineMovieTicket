@@ -3,11 +3,8 @@
 
 @{
     ViewBag.Title = "Create";
-     Layout = "~/Views/Shared/_LayoutSignout.cshtml";
-    if (Session["UserId"] == null)
-    {
-        Response.Redirect("~/Account/Login");
-    }
+     Layout = "~/Views/Shared/_Layout.cshtml";
+  
 }
 
 @using (Html.BeginForm("Delete", "Movie", FormMethod.Post))
@@ -31,12 +28,37 @@
         </tr>
         <tr>
             <td>
-                Show Time:
+                Show Time Morning:
             </td>
             <td>
-                @Html.TextBoxFor(Model => Model.ShowTime)
+                @Html.TextBoxFor(Model => Model.ShowTimeMorning)
+            </td>
+            <td style="color:red">
+                @Html.ValidationMessageFor(model => model.ShowTimeMorning)
             </td>
         </tr>
+        <tr>
+            <td>
+                Show Time Afternoon:
+            </td>
+            <td>
+                @Html.TextBoxFor(Model => Model.ShowTimeAfternoon)
+            </td>
+            <td style="color:red">
+                @Html.ValidationMessageFor(model => model.ShowTimeAfternoon)
+            </td>
+        <tr>
+            <td>
+                Show Time Evening:
+            </td>
+            <td>
+                @Html.TextBoxFor(Model => Model.ShowTimeEvening)
+            </td>
+            <td style="color:red">
+                @Html.ValidationMessageFor(model => model.ShowTimeEvening)
+            </td>
+        </tr>
+
         <tr>
             <td>
                 Price :

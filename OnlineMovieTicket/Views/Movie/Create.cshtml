@@ -3,69 +3,90 @@
 
 @{
     ViewBag.Title = "Create";
-     Layout = "~/Views/Shared/_LayoutSignout.cshtml";
-    if (Session["UserId"] == null)
-    {
-        Response.Redirect("~/Account/Login");
-    }
+     Layout = "~/Views/Shared/_Layout.cshtml";
+    
 }
 <h2></h2>
 
 @using (Html.BeginForm("Create", "Movie", FormMethod.Post))
 {
-    <table>
-        <tr>
-            <td>
-                Movie Name :
-            </td>
-            <td>
-                @Html.TextBoxFor(Model => Model.MovieName)</td>
-            <td style="color:red">
-                @Html.ValidationMessageFor(model => model.MovieName)
-            </td>
+<table>
+    <tr>
+        <td>
+            Movie Name :
+        </td>
+        <td>
+            @Html.TextBoxFor(Model => Model.MovieName)
+        </td>
+        <td style="color:red">
+            @Html.ValidationMessageFor(model => model.MovieName)
+        </td>
 
-        </tr>
-        <tr>
-            <td>
-                Movie Id :
-            </td>
-            <td>
-                @Html.TextBoxFor(Model => Model.MovieId)
-            </td>
-            <td style="color:red">
-                @Html.ValidationMessageFor(model => model.MovieId)
-            </td>
-        </tr>
-        <tr>
-            <td>
-                Show Time:
-            </td>
-            <td>
-                @Html.TextBoxFor(Model => Model.ShowTime)
-            </td>
-            <td style="color:red">
-                @Html.ValidationMessageFor(model => model.ShowTime)
-            </td>
-        </tr>
-        <tr>
-            <td>
-                Price :
-            </td>
-            <td>
-                @Html.TextBoxFor(Model => Model.Price)
-            </td>
-            <td style="color:red">
-                @Html.ValidationMessageFor(model => model.Price)
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <input type="submit" value="Create" />
-            </td>
-            <td>
-                <a href="~/Movie/Index">Back</a>
-            </td>
-        </tr>
-    </table>
+    </tr>
+
+    <tr>
+        <td>
+            Show Time Morning:
+        </td>
+        <td>
+            @Html.TextBoxFor(Model => Model.ShowTimeMorning)
+        </td>
+        <td style="color:red">
+            @Html.ValidationMessageFor(model => model.ShowTimeMorning)
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Show Time Afternoon:
+        </td>
+        <td>
+            @Html.TextBoxFor(Model => Model.ShowTimeAfternoon)
+        </td>
+        <td style="color:red">
+            @Html.ValidationMessageFor(model => model.ShowTimeAfternoon)
+        </td>
+    <tr>
+        <td>
+            Show Time Evening:
+        </td>
+        <td>
+            @Html.TextBoxFor(Model => Model.ShowTimeEvening)
+        </td>
+        <td style="color:red">
+            @Html.ValidationMessageFor(model => model.ShowTimeEvening)
+        </td>
+    </tr>
+    <tr>
+        <td>
+           Duration:
+        </td>
+        <td>
+            @Html.TextBoxFor(Model => Model.Duration)
+        </td>
+        <td style="color:red">
+            @Html.ValidationMessageFor(model => model.Duration)
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Price :
+        </td>
+        <td>
+            @Html.TextBoxFor(Model => Model.Price)
+        </td>
+        <td style="color:red">
+            @Html.ValidationMessageFor(model => model.Price)
+        </td>
+
+    </tr>
+    <tr>
+        <td>
+            <input type="submit" value="Create" />
+        </td>
+        <td>
+            <a href="~/Movie/Index">Back</a>
+        </td>
+    </tr>
+</table>
    
 }

@@ -3,19 +3,15 @@ namespace OnlineMovieTicket.Entity
 {
     public class Movie
     {
-        [Required]
-        [Display(Name="Movie Name")]
+        
         public string MovieName { get; set; }
-
-        [Required]
-        public string ShowTime { get; set; }
-
-        [Required]
+        public string ShowTimeMorning { get; set; }
+        public string ShowTimeAfternoon { get; set; }
+        public string ShowTimeEvening { get; set; }
+        [Key]
         public int MovieId { get; set; }
-
-        [Required]
         public double Price { get; set; }
-
-
+        public string Duration { get; set; }
+        public Category CategoryId { get; set; }
     }
 }

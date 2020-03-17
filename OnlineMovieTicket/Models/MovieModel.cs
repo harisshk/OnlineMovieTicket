@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Web;
 
 namespace OnlineMovieTicket.Models
 {
@@ -18,5 +19,6 @@ namespace OnlineMovieTicket.Models
         public double Price { get; set; }
         [Required(ErrorMessage = "Duration for movie is required")]
         public string Duration { get; set; }
+        
     }
 }

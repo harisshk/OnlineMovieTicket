@@ -6,6 +6,7 @@ using System.Web.Mvc;
 
 namespace OnlineMovieTicket.Controllers
 {
+        [Authorize (Roles ="Admin")]
     public class MovieController : Controller
     {
         
@@ -17,7 +18,7 @@ namespace OnlineMovieTicket.Controllers
             movieBL = new MovieBL();
         }
 
-       
+      [AllowAnonymous]
         public  ActionResult Index()
         {
             var movies = movieBL.Index();
@@ -31,6 +32,7 @@ namespace OnlineMovieTicket.Controllers
         
         public ActionResult Create(MovieModel movieModel)
         {
+            
 
             if (ModelState.IsValid)
             {
@@ -51,7 +53,7 @@ namespace OnlineMovieTicket.Controllers
                 return RedirectToAction("Index");
             
         }
-
+        [Authorize]
         public ActionResult Edit(int id)
         {
             Movie movie = movieBL.Edit(id);
@@ -70,6 +72,6 @@ namespace OnlineMovieTicket.Controllers
             TempData["Message"] = "Updated";
             return RedirectToAction("Index");
         }
-
+        
     }
 }

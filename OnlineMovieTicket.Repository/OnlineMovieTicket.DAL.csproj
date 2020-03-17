@@ -54,6 +54,7 @@
   <ItemGroup>
     <Compile Include="AccountRepository.cs" />
     <Compile Include="CategoryRepository.cs" />
+    <Compile Include="Database.cs" />
     <Compile Include="MovieRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

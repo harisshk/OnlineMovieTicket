@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Web;
 namespace OnlineMovieTicket.Entity
 {
     public class Movie
@@ -12,6 +13,6 @@ namespace OnlineMovieTicket.Entity
         public int MovieId { get; set; }
         public double Price { get; set; }
         public string Duration { get; set; }
-        public Category CategoryId { get; set; }
+       
     }
 }

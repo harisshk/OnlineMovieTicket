@@ -16,7 +16,7 @@ namespace OnlineMovieTicket.Repository
         {
             using (DatabaseContext database = new DatabaseContext())
             {
-                var usr = database.AccountDetail.Where(model => model.Name == account.Name && model.Password == account.Password).FirstOrDefault();
+                var usr = database.AccountDetail.Where(model => model.Email == account.Email && model.Password == account.Password).FirstOrDefault();
                 return usr;
             }
         }

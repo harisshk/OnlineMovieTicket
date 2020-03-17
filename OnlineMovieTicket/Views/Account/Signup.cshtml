@@ -3,6 +3,10 @@
     ViewBag.Title = "Signup";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
 @using (Html.BeginForm("SignUp", "Account", FormMethod.Post))
 {
     @Html.AntiForgeryToken()
@@ -13,51 +17,11 @@
             </div>
             <form>
                 <div class="input-wrap">
-                    @Html.Label("Username")
-                    @Html.TextBoxFor(Model => Model.Name, htmlAttributes: new { @class="signup-box-outer-input", @placeholder = "Username" })
+                    @Html.Label("Name")
+                    @Html.TextBoxFor(Model => Model.Name, htmlAttributes: new { @class = "signup-box-outer-input", @placeholder = "Username" })
                     <span>@Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })</span>
                 </div>
-                @*<div>
-                    <label for="dob"><b> Dob:</b></label>
-                    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-                    @Html.DropDownList("date", new List<SelectListItem> {
-               new SelectListItem { Text= "01", Value = "01" },
-               new SelectListItem { Text= "02", Value = "02" },
-               new SelectListItem { Text= "03", Value = "03" },
-               new SelectListItem { Text= "04", Value = "04" },
-               new SelectListItem { Text= "05", Value = "05" },
-               new SelectListItem { Text= "06", Value = "06" },
-               new SelectListItem { Text= "07", Value = "07" },
-               }
-            )
-
-                    @Html.DropDownList("month", new List<SelectListItem> {
-              new SelectListItem { Text= "01", Value = "01" },
-              new SelectListItem { Text= "02", Value = "02" },
-              new SelectListItem { Text= "03", Value = "03" },
-              new SelectListItem { Text= "04", Value = "04" },
-              new SelectListItem { Text= "05", Value = "05" },
-              new SelectListItem { Text= "06", Value = "06" },
-              new SelectListItem { Text= "07", Value = "07" },
-              new SelectListItem { Text= "08", Value = "08" },
-              new SelectListItem { Text= "09", Value = "09" },
-              new SelectListItem { Text= "10", Value = "10" },
-              new SelectListItem { Text= "11", Value = "11" },
-              new SelectListItem { Text= "12", Value = "12" },
-              }
-            )
-
-                    @Html.DropDownList("year", new List<SelectListItem> {
-              new SelectListItem { Text= "1998", Value = "01" },
-              new SelectListItem { Text= "1999", Value = "02" },
-              new SelectListItem { Text= "2000", Value = "03" },
-              new SelectListItem { Text= "2001", Value = "04" },
-              new SelectListItem { Text= "2002", Value = "05" },
-              new SelectListItem { Text= "2003", Value = "06" },
-
-              }
-            )</div>*@
-                
+               
                 <div>
                     <b>Gender</b><br />
                     <span> Male </span> @Html.RadioButton("Gender", "Male", false, new { @class = "radio-button" })
@@ -67,7 +31,7 @@
 
                 <div class="input-wrap">
                     <b>Password:</b>
-                    @Html.PasswordFor(Model => Model.Password, htmlAttributes: new { @class = "signup-box-outer-input", @placeholder = "Pasword" , @minlength="8" , @maxlength="16"})
+                    @Html.PasswordFor(Model => Model.Password, htmlAttributes: new { @class = "signup-box-outer-input", @placeholder = "Pasword", @minlength = "8", @maxlength = "16" })
                     @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
                 </div>
 

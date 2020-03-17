@@ -4,6 +4,9 @@
     ViewBag.Title = "Login";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
 @using (Html.BeginForm("Login", "Account", FormMethod.Post))
 {
     @Html.AntiForgeryToken()
@@ -13,13 +16,13 @@
                 <h1>Sign in</h1>
                 <form>
                     <div class="input-wrap">
-                        @Html.Label("Username")
-                        @Html.TextBoxFor(Model => Model.Name, htmlAttributes: new { @placeholder = "Username" })
-                        @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                        @Html.Label("Email")
+                        @Html.TextBoxFor(Model => Model.Email, htmlAttributes: new { @placeholder = "Email" })
+                        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
                     </div>
                     <div class="input-wrap">
                         @Html.Label("Password")
-                        @Html.PasswordFor(Model => Model.Password, htmlAttributes: new { @placeholder = "Password"})
+                        @Html.PasswordFor(Model => Model.Password, htmlAttributes: new { @placeholder = "Password" })
                         @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
                     </div>
                     <div class="input-wrap-red">
@@ -28,10 +31,10 @@
                     <div class="input-wrap">
                         <button type="submit">Login</button>
                     </div>
-                    
+
                     <div class="input-wrap">
                         <b>Don't have an account?</b>
-                        @Html.ActionLink("Signup","Signup", "Account",null,new { @cass = "signup-link" })
+                        @Html.ActionLink("Signup", "Signup", "Account", null, new { @cass = "signup-link" })
                     </div>
 
                 </form>

@@ -54,7 +54,32 @@
   <ItemGroup>
     <Compile Include="AccountRepository.cs" />
     <Compile Include="CategoryRepository.cs" />
-    <Compile Include="Database.cs" />
+    <Compile Include="Migrations\202003190418394_Users.cs" />
+    <Compile Include="Migrations\202003190418394_Users.designer.cs">
+      <DependentUpon>202003190418394_Users.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202003301335269_Date Time.cs" />
+    <Compile Include="Migrations\202003301335269_Date Time.designer.cs">
+      <DependentUpon>202003301335269_Date Time.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202003301341043_add datetime.cs" />
+    <Compile Include="Migrations\202003301341043_add datetime.designer.cs">
+      <DependentUpon>202003301341043_add datetime.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202003301410526_add.cs" />
+    <Compile Include="Migrations\202003301410526_add.designer.cs">
+      <DependentUpon>202003301410526_add.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OnlineMovieTicketDBContext.cs" />
+    <Compile Include="Migrations\202003181642352_InitialCreate.cs" />
+    <Compile Include="Migrations\202003181642352_InitialCreate.designer.cs">
+      <DependentUpon>202003181642352_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202003181713561_onlineMovie-v1.cs" />
+    <Compile Include="Migrations\202003181713561_onlineMovie-v1.designer.cs">
+      <DependentUpon>202003181713561_onlineMovie-v1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="MovieRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -70,6 +95,26 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202003181642352_InitialCreate.resx">
+      <DependentUpon>202003181642352_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003181713561_onlineMovie-v1.resx">
+      <DependentUpon>202003181713561_onlineMovie-v1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003190418394_Users.resx">
+      <DependentUpon>202003190418394_Users.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003301335269_Date Time.resx">
+      <DependentUpon>202003301335269_Date Time.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003301341043_add datetime.resx">
+      <DependentUpon>202003301341043_add datetime.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003301410526_add.resx">
+      <DependentUpon>202003301410526_add.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

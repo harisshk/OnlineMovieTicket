@@ -1,14 +1,22 @@
 ﻿using OnlineMovieTicket.Entity;
 using OnlineMovieTicket.Repository;
-using System.Collections;
+using System.Collections.Generic;
 
 namespace OnlineMovieTicket.BL
 {
-    public class MovieBL
+    public interface IMovieBL
+    {
+        List<Movie> Index();
+        void DeleteMovie(int id);
+        void CreateMovie(Movie movie);
+        void EditMovie(Movie movie);
+        Movie Edit(int id);
+    }
+    public class MovieBL:IMovieBL
     {
         public MovieRepository movieRepository = new MovieRepository();
 
-        public IEnumerable Index()
+        public List<Movie> Index()
         {
             return movieRepository.Index();
         }

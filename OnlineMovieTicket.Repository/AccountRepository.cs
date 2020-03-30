@@ -2,21 +2,26 @@
 using System.Linq;
 namespace OnlineMovieTicket.Repository
 {
-    public class AccountRepository
+    public interface IAccountRepository
     {
-        public void Signup(Account account)
+        void AddUser(Account account);
+        Account ChechkUser(Account account);
+    }
+    public class AccountRepository:IAccountRepository
+    {
+        public void AddUser(Account account)
         {
-            using (DatabaseContext database = new DatabaseContext())
+            using (OnlineMovieTicketDBContext onlineMovieTicketDBContext = new OnlineMovieTicketDBContext())
             {
-                database.AccountDetail.Add(account);
-                database.SaveChanges();
+                onlineMovieTicketDBContext.AccountDetail.Add(account);
+                onlineMovieTicketDBContext.SaveChanges();
             }
         }
-        public Account Login(Account account)
+        public Account ChechkUser(Account account)
         {
-            using (DatabaseContext database = new DatabaseContext())
+            using (OnlineMovieTicketDBContext onlineMovieTicketDBContext = new OnlineMovieTicketDBContext())
             {
-                var usr = database.AccountDetail.Where(model => model.Email == account.Email && model.Password == account.Password).FirstOrDefault();
+                var usr = onlineMovieTicketDBContext.AccountDetail.Where(model => model.Email == account.Email && model.Password == account.Password).FirstOrDefault();
                 return usr;
             }
         }

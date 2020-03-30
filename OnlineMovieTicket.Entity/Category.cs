@@ -1,8 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace OnlineMovieTicket.Entity
 {
@@ -10,8 +7,13 @@ namespace OnlineMovieTicket.Entity
     {
         [Key]
         public int CategoryId { get; set; }
+        [Required]
+        [MaxLength(20)]
         public string CategoryName { get; set; }
-        public string Discription { get; set; }
+        [Required]
+        [MaxLength(100)]
+        public string Description { get; set; }
+        
         public ICollection<Movie> Movies { get; set; }
 
     }

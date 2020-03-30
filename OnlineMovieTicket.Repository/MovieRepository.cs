@@ -1,53 +1,61 @@
 ﻿using OnlineMovieTicket.Entity;
-using System.Collections;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 
 namespace OnlineMovieTicket.Repository
 {
-    public class MovieRepository
+    public interface IMovieRepository
     {
-        public IEnumerable Index()
+        List<Movie> Index();
+        void AddMovie(Movie movie);
+        void DeleteMovie(int movieId);
+        Movie Edit(int id);
+        void EditMovie(Movie movie);
+    }
+    public class MovieRepository:IMovieRepository
+    {
+        public List<Movie> Index()
         {
-            using (DatabaseContext database = new DatabaseContext())
+            using (OnlineMovieTicketDBContext onlineMovieTicketDBContext = new OnlineMovieTicketDBContext())
             {
                 
-                List<Movie> movie = database.MovieDetails.ToList();
-                return movie;            }
+                List<Movie> movie = onlineMovieTicketDBContext.MovieDetails.ToList();
+                return movie;        
+            }
         }
         public void AddMovie(Movie movie)
         {
-            using (DatabaseContext database = new DatabaseContext())
+            using (OnlineMovieTicketDBContext onlineMovieTicketDBContext = new OnlineMovieTicketDBContext())
             {
-                database.MovieDetails.Add(movie);
-                database.SaveChanges();
+                onlineMovieTicketDBContext.MovieDetails.Add(movie);
+                onlineMovieTicketDBContext.SaveChanges();
             }
         }
       
         public void DeleteMovie(int movieId)
         {
-            using (DatabaseContext database = new DatabaseContext())
+            using (OnlineMovieTicketDBContext onlineMovieTicketDBContext = new OnlineMovieTicketDBContext())
             {
-                Movie movie = database.MovieDetails.Find(movieId);
-                database.MovieDetails.Remove(movie);
-                database.SaveChanges();
+                Movie movie = onlineMovieTicketDBContext.MovieDetails.Find(movieId);
+                onlineMovieTicketDBContext.MovieDetails.Remove(movie);
+                onlineMovieTicketDBContext.SaveChanges();
             }
         }
 
         public Movie Edit(int id)
         {
-            using (DatabaseContext database = new DatabaseContext())
+            using (OnlineMovieTicketDBContext onlineMovieTicketDBContext = new OnlineMovieTicketDBContext())
             {
-                return database.MovieDetails.Find(id);
+                return onlineMovieTicketDBContext.MovieDetails.Find(id);
             }
         }
         public void EditMovie(Movie movie)
         {
-            using (DatabaseContext database = new DatabaseContext())
+            using (OnlineMovieTicketDBContext onlineMovieTicketDBContext = new OnlineMovieTicketDBContext())
             {
-                database.Entry(movie).State = EntityState.Modified;
-                database.SaveChanges();
+                onlineMovieTicketDBContext.Entry(movie).State = EntityState.Modified;
+                onlineMovieTicketDBContext.SaveChanges();
             }
         }
         

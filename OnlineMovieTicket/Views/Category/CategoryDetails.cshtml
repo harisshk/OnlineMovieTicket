@@ -1,0 +1,28 @@
+﻿
+@{
+    ViewBag.Title = "CategoryDetails";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+    <table border="1">
+        <tr>
+            <th>
+                Category Id
+            </th>
+            <th>
+                Category Name
+            </th>
+            <th>
+                Description
+            </th>
+        </tr>
+        @foreach (OnlineMovieTicket.Entity.Category category in @Model)
+        {
+    <tr>
+        <td>            @category.CategoryId        </td>
+        <td>            @category.CategoryName        </td>
+        <td>            @category.Discription      </td>
+    </tr>
+        }
+    </table>
+

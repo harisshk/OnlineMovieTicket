@@ -1,0 +1,45 @@
+﻿@model OnlineMovieTicket.Entity.Category
+
+@{
+    ViewBag.Title = "AddCategory";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("AddCategory", "Category", FormMethod.Post))
+{
+    <table>
+        <tr>
+            <td>
+                Category Name :
+            </td>
+            <td>
+                @Html.TextBoxFor(Model => Model.CategoryName)
+            </td>
+            <td style="color:red">
+                @Html.ValidationMessageFor(model => model.CategoryName)
+            </td>
+
+        </tr>
+
+        <tr>
+            <td>
+                Category Description :
+            </td>
+            <td>
+                @Html.TextBoxFor(Model => Model.Description)
+            </td>
+            <td style="color:red">
+                @Html.ValidationMessageFor(model => model.Description)
+            </td>
+
+        </tr>
+        <tr>
+            <td>
+                <input type="submit" value="Create" />
+            </td>
+            <td>
+                <a href="~/Category/CategoryDetails">Back</a>
+            </td>
+        </tr>
+    </table>
+}

@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace OnlineMovieTicket.Controllers
 {
-        [Authorize (Roles ="Admin")]
+    [Authorize (Roles ="Admin")]
     public class MovieController : Controller
     {
         
@@ -32,17 +32,24 @@ namespace OnlineMovieTicket.Controllers
         
         public ActionResult Create(MovieModel movieModel)
         {
-            
-
             if (ModelState.IsValid)
             {
-                var mapMovie = new MapperConfiguration(cfg => { cfg.CreateMap<MovieModel, Movie>(); });
+                var mapMovie = new MapperConfiguration(configExpression => { configExpression.CreateMap<MovieModel, Movie>(); });
                 IMapper mapper = mapMovie.CreateMapper();
                 var movie = mapper.Map<MovieModel, Movie>(movieModel);
-
+                movie.CategoryId = 1;
                 movieBL.CreateMovie(movie);
-                return RedirectToAction("Index","Movie");
+                return RedirectToAction("Index", "Movie");
             }
+            //try
+            //{
+
+              
+            //}
+            //catch
+            //{
+            //    return View("Error");
+            //}
             return View();
         }
 
@@ -53,19 +60,18 @@ namespace OnlineMovieTicket.Controllers
                 return RedirectToAction("Index");
             
         }
-        [Authorize]
         public ActionResult Edit(int id)
         {
             Movie movie = movieBL.Edit(id);
 
-        return View(movie);
+            return View(movie);
           
         }
         [HttpPost]
         
         public ActionResult EditMovie(MovieModel movieModel)
         {
-            var mapMovie = new MapperConfiguration(cfg => { cfg.CreateMap<MovieModel, Movie>(); });
+            var mapMovie = new MapperConfiguration(configExpression => { configExpression.CreateMap<MovieModel, Movie>(); });
             IMapper mapper = mapMovie.CreateMapper();
             var movie = mapper.Map<MovieModel, Movie>(movieModel);
             movieBL.EditMovie(movie);

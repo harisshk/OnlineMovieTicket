@@ -1,18 +1,29 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using System.Web;
+using System;
 
 namespace OnlineMovieTicket.Models
 {
     public class MovieModel
     {
        [Required(ErrorMessage ="Movie name is required")]
+       [MaxLength(20)]
         public string MovieName { get; set; }
+
+        [DataType(DataType.Time)]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:HH:MM}")]
         [Required(ErrorMessage = "Show time for morning is required")]
-        public string ShowTimeMorning { get; set; }
+        public DateTime ShowTimeMorning { get; set; }
+
+        [DataType(DataType.Time)]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:HH:MM}")]
         [Required(ErrorMessage = "Show time for afternoon is required")]
-        public string ShowTimeAfternoon { get; set; }
+        public DateTime ShowTimeAfternoon { get; set; }
+
+        [DataType(DataType.Time)]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:HH:MM}")]
         [Required(ErrorMessage = "Show time for evening is required")]
-        public string ShowTimeEvening { get; set; }
+        public DateTime ShowTimeEvening { get; set; }
+
         [Key]
         public int MovieId { get; set; }
         [Required(ErrorMessage = "Price is required")]

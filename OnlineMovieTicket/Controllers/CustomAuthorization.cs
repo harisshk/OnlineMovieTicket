@@ -17,4 +17,4 @@ namespace OnlineMovieTicket.Controllers
             }
         }
     }
-}
+}   

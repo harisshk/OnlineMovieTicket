@@ -4,21 +4,22 @@ using OnlineMovieTicket.Repository;
 
 namespace OnlineMovieTicket.BL
 {
-    public class AccountBL
+    public interface IAccountBL
+    {
+        void AddUser(Account account);
+        Account ChechkUser(Account account);
+    }
+    public class AccountBL:IAccountBL
     {
         public AccountRepository accountRepository = new AccountRepository();
 
-        public void Signup(Account account)
+        public void AddUser(Account account)
         {
-            accountRepository.Signup(account);
+            accountRepository.AddUser(account);
         }
-        public Account Login(Account account)
+        public Account ChechkUser(Account account)
         {
-            return accountRepository.Login(account);
-            
-            
+            return accountRepository.ChechkUser(account);
         }
-       
-        
     }
 }

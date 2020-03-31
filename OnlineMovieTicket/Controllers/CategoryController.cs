@@ -18,15 +18,16 @@ namespace OnlineMovieTicket.Controllers
         // GET: Category
         public ActionResult CategoryDetails()
         {
-            var category=categoryBL.CategoryDetails();
-            return View(category);
+            var categories=categoryBL.CategoryDetails();
+            return View(categories);
         }
         public ActionResult AddCategory()
         {
             return View();
         }
+        [ValidateAntiForgeryToken]
         [HttpPost]
-        public ActionResult AddCategory(CategoryModel categoryModel)
+        internal ActionResult AddCategory(CategoryModel categoryModel)
         {
             try
             {

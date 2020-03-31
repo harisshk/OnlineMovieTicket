@@ -32,13 +32,10 @@ namespace OnlineMovieTicket.BL
         public void UpdateMovie(Movie movie)
         {
             movieRepository.UpdateMovie(movie);
-
         }
         public Movie GetMovieId(int id)
         {
             return movieRepository.GetMovieId(id);
-
         }
-        
     }
 }

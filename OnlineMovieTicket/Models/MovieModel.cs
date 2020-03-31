@@ -3,7 +3,7 @@ using System;
 
 namespace OnlineMovieTicket.Models
 {
-    public class MovieModel
+    internal class MovieModel
     {
        [Required(ErrorMessage ="Movie name is required")]
        [MaxLength(20)]
@@ -31,7 +31,7 @@ namespace OnlineMovieTicket.Models
         [Required(ErrorMessage = "Duration for movie is required")]
         public string Duration { get; set; }
         public int CategoryId { get; set; }
-        public CategoryModel CategoryModel { get; set; }
+        internal CategoryModel CategoryModel { get; set; }
 
     }
 }

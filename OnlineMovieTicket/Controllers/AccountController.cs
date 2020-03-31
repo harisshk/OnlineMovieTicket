@@ -18,7 +18,7 @@ namespace OnlineMovieTicket.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Login(LoginViewModel login)
+        internal ActionResult Login(LoginViewModel login)
         {
             try
             {
@@ -62,7 +62,7 @@ namespace OnlineMovieTicket.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Signup(SignupViewModel signup)
+        internal ActionResult Signup(SignupViewModel signup)
         {
             try
             {

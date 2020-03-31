@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace OnlineMovieTicket.Models
 {
-    public class CategoryModel
+    internal class CategoryModel
     {
         [Key]
         public int CategoryId { get; set; }

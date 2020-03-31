@@ -27,13 +27,14 @@ namespace OnlineMovieTicket.Controllers
         }
         public ActionResult CreateMovie() //Add Movie Page [GET]
         {
-            List<OnlineMovieTicket.Entity.Category> category = categoryBL.CategoryDetails();
+            IEnumerable<OnlineMovieTicket.Entity.Category> category = categoryBL.CategoryDetails();
             ViewBag.categories = new SelectList(category, "CategoryId", "CategoryName", "CategoryDescription");
             return View();
         }
         [HttpPost]
-        
-        public ActionResult CreateMovie(MovieModel movieModel) //Add Movie Page [POST]
+        [ValidateAntiForgeryToken]
+
+        internal ActionResult CreateMovie(MovieModel movieModel) //Add Movie Page [POST]
         {
             try
             {
@@ -42,7 +43,7 @@ namespace OnlineMovieTicket.Controllers
                     var mapMovie = new MapperConfiguration(configExpression => { configExpression.CreateMap<MovieModel, Movie>(); });
                     IMapper mapper = mapMovie.CreateMapper();
                     var movie = mapper.Map<MovieModel, Movie>(movieModel);
-                    List<OnlineMovieTicket.Entity.Category> categorys = categoryBL.CategoryDetails();
+                    IEnumerable<OnlineMovieTicket.Entity.Category> categorys = categoryBL.CategoryDetails();
                     ViewBag.categories = new SelectList(categorys, "CategoryId", "CategoryName", "CategoryDescription");
                     movieBL.CreateMovie(movie);
                     return RedirectToAction("Index", "Movie");
@@ -66,17 +67,20 @@ namespace OnlineMovieTicket.Controllers
         public ActionResult EditMovie(int id) //Update Movie [GET]
         {
             Movie movie = movieBL.GetMovieId(id);
-
+            IEnumerable<OnlineMovieTicket.Entity.Category> category = categoryBL.CategoryDetails();
+            ViewBag.categories = new SelectList(category, "CategoryId", "CategoryName", "CategoryDescription");
             return View(movie);
           
         }
         [HttpPost]
-        
-        public ActionResult EditMovie(MovieModel movieModel) //Update Movie [POST]
+        [ValidateAntiForgeryToken]
+        internal ActionResult EditMovie(MovieModel movieModel) //Update Movie [POST]
         {
             var mapMovie = new MapperConfiguration(configExpression => { configExpression.CreateMap<MovieModel, Movie>(); });
             IMapper mapper = mapMovie.CreateMapper();
             var movie = mapper.Map<MovieModel, Movie>(movieModel);
+            IEnumerable<OnlineMovieTicket.Entity.Category> category = categoryBL.CategoryDetails();
+            ViewBag.categories = new SelectList(category, "CategoryId", "CategoryName", "CategoryDescription");
             movieBL.UpdateMovie(movie);
             TempData["Message"] = "Updated";
             return RedirectToAction("Index");

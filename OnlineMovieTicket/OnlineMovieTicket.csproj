@@ -178,7 +178,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BookingController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
-    <Compile Include="Controllers\CustomAuthorization.cs" />
+    <Compile Include="Authorization\CustomAuthorization.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MovieController.cs" />
     <Compile Include="Global.asax.cs">
@@ -311,7 +311,6 @@
     <Content Include="Views\Movie\DeleteMovie.cshtml" />
     <Content Include="Views\Movie\EditMovie.cshtml" />
     <Content Include="Views\Movie\Index.cshtml" />
-    <Content Include="Views\Account\LogOff.cshtml" />
     <Content Include="Views\Home\AboutUs.cshtml" />
     <Content Include="Views\Booking\Book.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />

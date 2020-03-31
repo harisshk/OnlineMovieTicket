@@ -13,23 +13,30 @@
         <div>
             @Html.ActionLink("Home", "Index", "Movie", null, new { @class = "masterbtn" })
             @Html.ActionLink("AboutUs", "AboutUs", "Home", null, new { @class = "masterbtn" })
-            @if (System.Web.HttpContext.Current.User.IsInRole("Admin"))
+
+
+            @if (System.Web.HttpContext.Current.User.Identity.IsAuthenticated)
              {
-                
-                @Html.ActionLink("Add Movie", "CreateMovie", "Movie", null, new { @class = "masterbtn" })
-                @Html.ActionLink("Category","CategoryDetails","Category", null, new { @class = "masterbtn" })
-                @Html.ActionLink("Add Category", "AddCategory", "Category", null, new { @class = "masterbtn" })
-             }
-            <div class="master-right">
-                @if (System.Web.HttpContext.Current.User.Identity.IsAuthenticated)
-                 {
-                    @Html.ActionLink("Logout", "LogOff", "Account", null, new { @class = "masterbtn" })
-                 }
-                else
+
+                if (System.Web.HttpContext.Current.User.IsInRole("Admin"))
                 {
-                    @Html.ActionLink("Login", "Login", "Account", null, new { @class = "masterbtn" })
+
+                    @Html.ActionLink("Add Movie", "CreateMovie", "Movie", null, new { @class = "masterbtn" })
+                    @Html.ActionLink("Category", "CategoryDetails", "Category", null, new { @class = "masterbtn" })
+                    @Html.ActionLink("Add Category", "AddCategory", "Category", null, new { @class = "masterbtn" })
                 }
-            </div>
+                <div class="master-right">
+                    @Html.ActionLink("Logout", "LogOff", "Account", null, new { @class = "masterbtn" })
+                </div>
+             }
+
+            else
+            {
+                <div class="master-right">
+                    @Html.ActionLink("Login", "Login", "Account", null, new { @class = "masterbtn" })
+                </div>
+            }
+
         </div>
     </header>
     <br />

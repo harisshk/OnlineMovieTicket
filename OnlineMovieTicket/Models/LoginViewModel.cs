@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 namespace OnlineMovieTicket.Models
 {
-    public class LoginViewModel
+    internal class LoginViewModel
     {
         [Required]      
         public string Email { get; set; }

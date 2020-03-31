@@ -7,7 +7,7 @@ namespace OnlineMovieTicket.Repository
     public interface ICategoryRespository
     {
         void AddCategory(Category category);
-        List<Category> CategoryDetails();
+        IEnumerable<Category> CategoryDetails();
         Category Details(int id);
         void Delete(int id);
         void Update(Category category);
@@ -24,13 +24,13 @@ namespace OnlineMovieTicket.Repository
             }
 
         }
-        public List<Category> CategoryDetails()   //Fetch Category from Database.
+        public IEnumerable<Category> CategoryDetails()   //Fetch Category from Database.
         {
             using (OnlineMovieTicketDBContext onlineMovieTicketDBContext = new OnlineMovieTicketDBContext())
             {
 
-                List<Category> data = onlineMovieTicketDBContext.Categories.ToList();
-                return data;
+              return onlineMovieTicketDBContext.Categories.ToList(); ;
+               
             }
         }
         public Category Details(int id)   //Get Id of Category.

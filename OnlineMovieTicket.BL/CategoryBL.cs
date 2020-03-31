@@ -11,7 +11,7 @@ namespace OnlineMovieTicket.BL
     public interface ICategoryBL
     {
         void AddCategory(Category category);
-        List<Category> CategoryDetails();
+        IEnumerable<Category> CategoryDetails();
         Category Details(int id);
         void Delete(int id);
         void Update(Category category);
@@ -25,7 +25,7 @@ namespace OnlineMovieTicket.BL
             categoryRepository.AddCategory(category);
         }
 
-        public List<Category> CategoryDetails()
+        public IEnumerable<Category> CategoryDetails()
         {
             return categoryRepository.CategoryDetails();
         }

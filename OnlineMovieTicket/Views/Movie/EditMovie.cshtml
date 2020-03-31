@@ -14,6 +14,7 @@
 
 @using (Html.BeginForm("EditMovie", "Movie", FormMethod.Post))
 {
+    @Html.AntiForgeryToken()
     @Html.HiddenFor(Model => Model.MovieId);
     <table>
         <tr>
@@ -83,6 +84,16 @@
             <td style="color:red">
                 @Html.ValidationMessageFor(model => model.MovieName)
             </td>
+        </tr>
+        <tr>
+
+            <td>
+                @Html.LabelFor(Model => Model.CategoryId)
+            </td>
+            <td style="color:red">
+                @Html.DropDownListFor(Model => Model.CategoryId, ViewBag.categories as IEnumerable<SelectListItem>)
+            </td>
+
         </tr>
         <tr>
             <td>

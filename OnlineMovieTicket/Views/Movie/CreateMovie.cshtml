@@ -11,22 +11,10 @@
 <script src="~/Scripts/jquery.validate.min.js"></script>
 <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
 <script src="~/Scripts/bootstrap-datetimepicker.js"></script>
-@*<script>
-    $('.timepicker').timepicker({
-    timeFormat: 'h:mm p',
-    interval: 30,
-    minTime: '10',
-    maxTime: '6:00pm',
-    defaultTime: '11',
-    startTime: '10:00',
-    dynamic: false,
-    dropdown: true,
-    scrollbar: true
-});
-</script>*@
 
 @using (Html.BeginForm("CreateMovie", "Movie", FormMethod.Post))
 {
+    @Html.AntiForgeryToken()
     <table>
         <tr>
             <td>
@@ -96,13 +84,13 @@
                 @Html.ValidationMessageFor(model => model.Price)
             </td>
         </tr>
-       <tr>
-            
+        <tr>
+
             <td>
                 @Html.LabelFor(Model => Model.CategoryId)
             </td>
             <td style="color:red">
-                @Html.DropDownListFor(Model => Model.CategoryId,ViewBag.categories as IEnumerable<SelectListItem>)
+                @Html.DropDownListFor(Model => Model.CategoryId, ViewBag.categories as IEnumerable<SelectListItem>)
             </td>
 
         </tr>

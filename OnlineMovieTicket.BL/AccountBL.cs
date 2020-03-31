@@ -7,7 +7,7 @@ namespace OnlineMovieTicket.BL
     public interface IAccountBL
     {
         void AddUser(Account account);
-        Account ChechkUser(Account account);
+        Account CheckUser(Account account);
     }
     public class AccountBL:IAccountBL
     {
@@ -17,9 +17,9 @@ namespace OnlineMovieTicket.BL
         {
             accountRepository.AddUser(account);
         }
-        public Account ChechkUser(Account account)
+        public Account CheckUser(Account account)
         {
-            return accountRepository.ChechkUser(account);
+            return accountRepository.CheckUser(account);
         }
     }
 }

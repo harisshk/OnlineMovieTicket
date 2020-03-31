@@ -5,7 +5,7 @@ namespace OnlineMovieTicket.Repository
     public interface IAccountRepository
     {
         void AddUser(Account account);
-        Account ChechkUser(Account account);
+        Account CheckUser(Account account);
     }
     public class AccountRepository:IAccountRepository
     {
@@ -17,7 +17,7 @@ namespace OnlineMovieTicket.Repository
                 onlineMovieTicketDBContext.SaveChanges();
             }
         }
-        public Account ChechkUser(Account account)
+        public Account CheckUser(Account account)
         {
             using (OnlineMovieTicketDBContext onlineMovieTicketDBContext = new OnlineMovieTicketDBContext())
             {

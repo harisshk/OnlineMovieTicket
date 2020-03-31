@@ -4,7 +4,6 @@ namespace OnlineMovieTicket.Controllers
 {
     public class BookingController : Controller
     {
-        // GET: Booking
         [CustomAuthorization(Roles = "Admin,User")]
         public ActionResult Book()
         {

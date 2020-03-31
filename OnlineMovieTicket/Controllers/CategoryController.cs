@@ -6,6 +6,7 @@ using System.Web.Mvc;
 
 namespace OnlineMovieTicket.Controllers
 {
+    [Authorize]
     public class CategoryController : Controller
     {
         public CategoryBL categoryBL;

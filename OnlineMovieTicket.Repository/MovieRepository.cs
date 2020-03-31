@@ -7,15 +7,17 @@ namespace OnlineMovieTicket.Repository
 {
     public interface IMovieRepository
     {
-        List<Movie> Index();
+        List<Movie> GetAllMovies();
         void AddMovie(Movie movie);
         void DeleteMovie(int movieId);
-        Movie Edit(int id);
-        void EditMovie(Movie movie);
+        Movie GetMovieId(int id);
+        void UpdateMovie(Movie movie);
+      
     }
     public class MovieRepository:IMovieRepository
     {
-        public List<Movie> Index()
+        
+        public List<Movie> GetAllMovies() //Get all movies from Database.
         {
             using (OnlineMovieTicketDBContext onlineMovieTicketDBContext = new OnlineMovieTicketDBContext())
             {
@@ -24,7 +26,7 @@ namespace OnlineMovieTicket.Repository
                 return movie;        
             }
         }
-        public void AddMovie(Movie movie)
+        public void AddMovie(Movie movie) //Add movies to Database.
         {
             using (OnlineMovieTicketDBContext onlineMovieTicketDBContext = new OnlineMovieTicketDBContext())
             {
@@ -33,7 +35,7 @@ namespace OnlineMovieTicket.Repository
             }
         }
       
-        public void DeleteMovie(int movieId)
+        public void DeleteMovie(int movieId) //Delete movie from the database.
         {
             using (OnlineMovieTicketDBContext onlineMovieTicketDBContext = new OnlineMovieTicketDBContext())
             {
@@ -43,14 +45,14 @@ namespace OnlineMovieTicket.Repository
             }
         }
 
-        public Movie Edit(int id)
+        public Movie GetMovieId(int id) //Get Id of the movie from the database.
         {
             using (OnlineMovieTicketDBContext onlineMovieTicketDBContext = new OnlineMovieTicketDBContext())
             {
                 return onlineMovieTicketDBContext.MovieDetails.Find(id);
             }
         }
-        public void EditMovie(Movie movie)
+        public void UpdateMovie(Movie movie) //Update the movie details to the database.
         {
             using (OnlineMovieTicketDBContext onlineMovieTicketDBContext = new OnlineMovieTicketDBContext())
             {

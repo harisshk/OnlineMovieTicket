@@ -4,7 +4,6 @@ using System.Linq;
 
 namespace OnlineMovieTicket.Repository
 {
-
     public interface ICategoryRespository
     {
         void AddCategory(Category category);
@@ -16,9 +15,7 @@ namespace OnlineMovieTicket.Repository
     }
     public class CategoryRepository : ICategoryRespository
     {
-
-
-        public void AddCategory(Category category)
+        public void AddCategory(Category category)   //Add Category .
         {
             using (OnlineMovieTicketDBContext onlineMovieTicketDBContext = new OnlineMovieTicketDBContext())
             {
@@ -27,7 +24,7 @@ namespace OnlineMovieTicket.Repository
             }
 
         }
-        public List<Category> CategoryDetails()
+        public List<Category> CategoryDetails()   //Fetch Category from Database.
         {
             using (OnlineMovieTicketDBContext onlineMovieTicketDBContext = new OnlineMovieTicketDBContext())
             {
@@ -36,7 +33,7 @@ namespace OnlineMovieTicket.Repository
                 return data;
             }
         }
-        public Category Details(int id)
+        public Category Details(int id)   //Get Id of Category.
         {
             using (OnlineMovieTicketDBContext database = new OnlineMovieTicketDBContext())
             {
@@ -44,19 +41,17 @@ namespace OnlineMovieTicket.Repository
                 return category;
             }
         }
-        public void Delete(int id)
+        public void Delete(int id) //Delete Category from Database table.
         {
             using (OnlineMovieTicketDBContext onlineMovieTicketDBContext = new OnlineMovieTicketDBContext())
             {
                 Category category = onlineMovieTicketDBContext.Categories.Find(id);
                 onlineMovieTicketDBContext.Categories.Remove(category);
                 onlineMovieTicketDBContext.SaveChanges();
-
-
             }
         }
 
-        public void Update(Category category)
+        public void Update(Category category) //Update Category ti the Database.
         {
             using (OnlineMovieTicketDBContext onlineMovieTicketDBContext = new OnlineMovieTicketDBContext())
             {
@@ -73,8 +68,5 @@ namespace OnlineMovieTicket.Repository
                 return onlineMovieTicketDBContext.Categories.Where(category => category.CategoryId == id).FirstOrDefault();
             }
         }
-
     }
-
-
 }

@@ -6,19 +6,20 @@ namespace OnlineMovieTicket.BL
 {
     public interface IMovieBL
     {
-        List<Movie> Index();
+        List<Movie> GetAllMovies();
         void DeleteMovie(int id);
         void CreateMovie(Movie movie);
-        void EditMovie(Movie movie);
-        Movie Edit(int id);
+        void UpdateMovie(Movie movie);
+        Movie GetMovieId(int id);
+      
     }
     public class MovieBL:IMovieBL
     {
         public MovieRepository movieRepository = new MovieRepository();
 
-        public List<Movie> Index()
+        public List<Movie> GetAllMovies()
         {
-            return movieRepository.Index();
+            return movieRepository.GetAllMovies();
         }
         public void DeleteMovie(int id)
         {
@@ -28,15 +29,16 @@ namespace OnlineMovieTicket.BL
         {
             movieRepository.AddMovie(movie);
         }
-        public void EditMovie(Movie movie)
+        public void UpdateMovie(Movie movie)
         {
-            movieRepository.EditMovie(movie);
+            movieRepository.UpdateMovie(movie);
 
         }
-        public Movie Edit(int id)
+        public Movie GetMovieId(int id)
         {
-            return movieRepository.Edit(id);
+            return movieRepository.GetMovieId(id);
 
         }
+        
     }
 }

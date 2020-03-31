@@ -28,7 +28,7 @@ namespace OnlineMovieTicket.Controllers
                     IMapper mapper = mapAccount.CreateMapper();
                     var account = mapper.Map<LoginViewModel, Account>(login);
 
-                    Account accountDetails = accountBL.ChechkUser(account);
+                    Account accountDetails = accountBL.CheckUser(account);
                     if (accountDetails != null)
                     {
                         FormsAuthentication.SetAuthCookie(accountDetails.Name, false);

@@ -30,6 +30,8 @@ namespace OnlineMovieTicket.Models
         public double Price { get; set; }
         [Required(ErrorMessage = "Duration for movie is required")]
         public string Duration { get; set; }
-        
+        public int CategoryId { get; set; }
+        public CategoryModel CategoryModel { get; set; }
+
     }
 }

@@ -2,6 +2,7 @@
 using OnlineMovieTicket.BL;
 using OnlineMovieTicket.Entity;
 using OnlineMovieTicket.Models;
+using System.Collections.Generic;
 using System.Web.Mvc;
 
 namespace OnlineMovieTicket.Controllers
@@ -11,70 +12,72 @@ namespace OnlineMovieTicket.Controllers
     {
         
         public MovieBL movieBL;
-
-       
-        public MovieController()
+        public CategoryBL categoryBL;
+        public MovieController() //Constructor
         {
             movieBL = new MovieBL();
+            categoryBL = new CategoryBL();
         }
 
       [AllowAnonymous]
-        public  ActionResult Index()
+        public  ActionResult Index() //HomePage
         {
-            var movies = movieBL.Index();
+            var movies = movieBL.GetAllMovies();
             return View(movies);
         }
-        public ActionResult Create()
+        public ActionResult CreateMovie() //Add Movie Page [GET]
         {
+            List<OnlineMovieTicket.Entity.Category> category = categoryBL.CategoryDetails();
+            ViewBag.categories = new SelectList(category, "CategoryId", "CategoryName", "CategoryDescription");
             return View();
         }
         [HttpPost]
         
-        public ActionResult Create(MovieModel movieModel)
+        public ActionResult CreateMovie(MovieModel movieModel) //Add Movie Page [POST]
         {
-            if (ModelState.IsValid)
+            try
             {
-                var mapMovie = new MapperConfiguration(configExpression => { configExpression.CreateMap<MovieModel, Movie>(); });
-                IMapper mapper = mapMovie.CreateMapper();
-                var movie = mapper.Map<MovieModel, Movie>(movieModel);
-                movie.CategoryId = 1;
-                movieBL.CreateMovie(movie);
-                return RedirectToAction("Index", "Movie");
-            }
-            //try
-            //{
+                if (ModelState.IsValid)
+                {
+                    var mapMovie = new MapperConfiguration(configExpression => { configExpression.CreateMap<MovieModel, Movie>(); });
+                    IMapper mapper = mapMovie.CreateMapper();
+                    var movie = mapper.Map<MovieModel, Movie>(movieModel);
+                    List<OnlineMovieTicket.Entity.Category> categorys = categoryBL.CategoryDetails();
+                    ViewBag.categories = new SelectList(categorys, "CategoryId", "CategoryName", "CategoryDescription");
+                    movieBL.CreateMovie(movie);
+                    return RedirectToAction("Index", "Movie");
+                }
 
-              
-            //}
-            //catch
-            //{
-            //    return View("Error");
-            //}
+            }
+            catch
+            {
+                return View("Error");
+            }
             return View();
         }
 
-        public ActionResult Delete(int Id)
+        public ActionResult DeleteMovie(int Id) //Delete Movie
         {
             movieBL.DeleteMovie(Id);
             
                 return RedirectToAction("Index");
             
         }
-        public ActionResult Edit(int id)
+        public ActionResult EditMovie(int id) //Update Movie [GET]
         {
-            Movie movie = movieBL.Edit(id);
+            Movie movie = movieBL.GetMovieId(id);
 
             return View(movie);
           
         }
         [HttpPost]
         
-        public ActionResult EditMovie(MovieModel movieModel)
+        public ActionResult EditMovie(MovieModel movieModel) //Update Movie [POST]
         {
             var mapMovie = new MapperConfiguration(configExpression => { configExpression.CreateMap<MovieModel, Movie>(); });
             IMapper mapper = mapMovie.CreateMapper();
             var movie = mapper.Map<MovieModel, Movie>(movieModel);
-            movieBL.EditMovie(movie);
+            movieBL.UpdateMovie(movie);
             TempData["Message"] = "Updated";
             return RedirectToAction("Index");
         }

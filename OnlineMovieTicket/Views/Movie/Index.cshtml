@@ -34,13 +34,14 @@
             <td>@movie.ShowTimeEvening</td>
             <td>@movie.Duration</td>
             <td>@movie.Price</td>
+           <td> @movie.Category</td>
             <td>
                 @Html.ActionLink("Book", "Book","Booking")</td>
                 @if (HttpContext.Current.User.IsInRole("Admin"))
                 {
 <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = movie.MovieId })
-                    @Html.ActionLink("Delete", "Delete", new { id = movie.MovieId })
+                    @Html.ActionLink("Edit", "EditMovie", new { id = movie.MovieId })
+                    @Html.ActionLink("Delete", "DeleteMovie", new { id = movie.MovieId })
                 </td>
             }
 

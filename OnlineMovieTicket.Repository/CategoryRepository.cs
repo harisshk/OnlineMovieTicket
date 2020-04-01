@@ -51,7 +51,7 @@ namespace OnlineMovieTicket.Repository
             }
         }
 
-        public void Update(Category category) //Update Category ti the Database.
+        public void Update(Category category) //Update Category to the Database.
         {
             using (OnlineMovieTicketDBContext onlineMovieTicketDBContext = new OnlineMovieTicketDBContext())
             {
@@ -61,7 +61,7 @@ namespace OnlineMovieTicket.Repository
             }
         }
 
-        public Category GetCategory(int id)
+        public Category GetCategory(int id) //Get Category 
         {
             using (OnlineMovieTicketDBContext onlineMovieTicketDBContext = new OnlineMovieTicketDBContext())
             {

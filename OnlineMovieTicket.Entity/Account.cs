@@ -7,23 +7,18 @@ namespace OnlineMovieTicket.Entity
     {
         [Key]
         public int UserId { get; set; }
-        [Required(ErrorMessage = "Username Required.")]
+        [Required]
         public string Name { get; set; }
-
-        [Required(ErrorMessage = "Gender Required.")]
+        [Required]
         public string Gender { get; set; }
-
-        [Required(ErrorMessage = "Email Required.")]
+        [Required]
         [EmailAddress]
         public string Email { get; set; }
-
-        [Required(ErrorMessage = "Phone number Required")]
-        [RegularExpression(@"^[6789]\d{9}$",
-                   ErrorMessage = "Entered phone format is not valid.")]
+        [Required]
         public string Phone { get; set; }
-
         [Required]
         public string Password { get; set; }
+        [Required]
         public string Role { get; set; }
      
     }

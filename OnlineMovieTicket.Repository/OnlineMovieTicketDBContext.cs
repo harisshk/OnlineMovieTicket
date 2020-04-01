@@ -7,7 +7,7 @@ namespace OnlineMovieTicket.Repository
     {
 
         public OnlineMovieTicketDBContext() : base("DatabaseContext") { }
-        public DbSet<Account> AccountDetail { get; set; }
+        public DbSet<Account> AccountDetails { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Movie> MovieDetails { get; set; }
 

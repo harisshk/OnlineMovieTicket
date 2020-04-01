@@ -13,7 +13,7 @@ namespace OnlineMovieTicket.Repository
         {
             using (OnlineMovieTicketDBContext onlineMovieTicketDBContext = new OnlineMovieTicketDBContext())
             {
-                onlineMovieTicketDBContext.AccountDetail.Add(account);
+                onlineMovieTicketDBContext.AccountDetails.Add(account);
                 onlineMovieTicketDBContext.SaveChanges();
             }
         }
@@ -21,7 +21,7 @@ namespace OnlineMovieTicket.Repository
         {
             using (OnlineMovieTicketDBContext onlineMovieTicketDBContext = new OnlineMovieTicketDBContext())
             {
-                var usr = onlineMovieTicketDBContext.AccountDetail.Where(model => model.Email == account.Email && model.Password == account.Password).FirstOrDefault();
+                var usr = onlineMovieTicketDBContext.AccountDetails.Where(model => model.Email == account.Email && model.Password == account.Password).FirstOrDefault();
                 return usr;
             }
         }

@@ -15,6 +15,7 @@ namespace OnlineMovieTicket.BL
 
         public void AddUser(Account account)
         {
+            account.Role = "User";
             accountRepository.AddUser(account);
         }
         public Account CheckUser(Account account)

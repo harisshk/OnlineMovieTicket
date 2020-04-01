@@ -7,10 +7,10 @@ using System.Web.Mvc;
 
 namespace OnlineMovieTicket.Controllers
 {
-    [Authorize (Roles ="Admin")]
+    [CustomAuthorization(Roles = "Admin")]
     public class MovieController : Controller
     {
-        
+
         public MovieBL movieBL;
         public CategoryBL categoryBL;
         public MovieController() //Constructor
@@ -19,8 +19,8 @@ namespace OnlineMovieTicket.Controllers
             categoryBL = new CategoryBL();
         }
 
-      [AllowAnonymous]
-        public  ActionResult Index() //HomePage
+        [AllowAnonymous]
+        public ActionResult Index() //HomePage
         {
             var movies = movieBL.GetAllMovies();
             return View(movies);
@@ -31,9 +31,9 @@ namespace OnlineMovieTicket.Controllers
             ViewBag.categories = new SelectList(category, "CategoryId", "CategoryName", "CategoryDescription");
             return View();
         }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
-
         internal ActionResult CreateMovie(MovieModel movieModel) //Add Movie Page [POST]
         {
             try
@@ -60,17 +60,16 @@ namespace OnlineMovieTicket.Controllers
         public ActionResult DeleteMovie(int Id) //Delete Movie
         {
             movieBL.DeleteMovie(Id);
-            
-                return RedirectToAction("Index");
-            
+            return RedirectToAction("Index");
+
         }
         public ActionResult EditMovie(int id) //Update Movie [GET]
         {
             Movie movie = movieBL.GetMovieId(id);
             IEnumerable<OnlineMovieTicket.Entity.Category> category = categoryBL.CategoryDetails();
-            ViewBag.categories = new SelectList(category, "CategoryId", "CategoryName", "CategoryDescription");
+            ViewBag.categories = new SelectList(category, "CategoryId", "CategoryName");
             return View(movie);
-          
+
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -80,11 +79,11 @@ namespace OnlineMovieTicket.Controllers
             IMapper mapper = mapMovie.CreateMapper();
             var movie = mapper.Map<MovieModel, Movie>(movieModel);
             IEnumerable<OnlineMovieTicket.Entity.Category> category = categoryBL.CategoryDetails();
-            ViewBag.categories = new SelectList(category, "CategoryId", "CategoryName", "CategoryDescription");
+            ViewBag.categories = new SelectList(category, "CategoryId", "CategoryName");
             movieBL.UpdateMovie(movie);
             TempData["Message"] = "Updated";
             return RedirectToAction("Index");
         }
-        
+
     }
 }

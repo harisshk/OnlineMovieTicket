@@ -12,18 +12,18 @@ namespace OnlineMovieTicket.Repository
         void DeleteMovie(int movieId);
         Movie GetMovieId(int id);
         void UpdateMovie(Movie movie);
-      
+
     }
-    public class MovieRepository:IMovieRepository
+    public class MovieRepository : IMovieRepository
     {
-        
+
         public List<Movie> GetAllMovies() //Get all movies from Database.
         {
             using (OnlineMovieTicketDBContext onlineMovieTicketDBContext = new OnlineMovieTicketDBContext())
             {
-                
-                List<Movie> movie = onlineMovieTicketDBContext.MovieDetails.ToList();
-                return movie;        
+
+                List<Movie> movie = onlineMovieTicketDBContext.MovieDetails.Include("Category").ToList();
+                return movie;
             }
         }
         public void AddMovie(Movie movie) //Add movies to Database.
@@ -34,7 +34,7 @@ namespace OnlineMovieTicket.Repository
                 onlineMovieTicketDBContext.SaveChanges();
             }
         }
-      
+
         public void DeleteMovie(int movieId) //Delete movie from the database.
         {
             using (OnlineMovieTicketDBContext onlineMovieTicketDBContext = new OnlineMovieTicketDBContext())
@@ -60,7 +60,5 @@ namespace OnlineMovieTicket.Repository
                 onlineMovieTicketDBContext.SaveChanges();
             }
         }
-        
     }
-    
 }

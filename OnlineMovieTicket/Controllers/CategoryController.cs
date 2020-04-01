@@ -10,41 +10,34 @@ namespace OnlineMovieTicket.Controllers
     public class CategoryController : Controller
     {
         public CategoryBL categoryBL;
-            public CategoryController()
+        public CategoryController() //Constructor.
         {
-            categoryBL = new CategoryBL();
+            categoryBL = new CategoryBL(); //Creating object to access CategoryBL class.
         }
 
-        // GET: Category
-        public ActionResult CategoryDetails()
+        public ActionResult CategoryDetails() // GET Category
         {
-            var categories=categoryBL.CategoryDetails();
+            var categories = categoryBL.CategoryDetails(); //Method call to Category BL
             return View(categories);
         }
-        public ActionResult AddCategory()
+
+        public ActionResult AddCategory() //Add Category [GET]
         {
             return View();
         }
+
         [ValidateAntiForgeryToken]
         [HttpPost]
-        internal ActionResult AddCategory(CategoryModel categoryModel)
+        internal ActionResult AddCategory(CategoryModel categoryModel) //Add Category [POST]
         {
-            try
+            if (ModelState.IsValid)
             {
-
-                if (ModelState.IsValid)
-                {
-                    var mapCategory = new MapperConfiguration(configExpression => { configExpression.CreateMap<CategoryModel, Category>(); });
-                    IMapper mapper = mapCategory.CreateMapper();
-                    var category = mapper.Map<CategoryModel, Category>(categoryModel);
-
-                    categoryBL.AddCategory(category);
-                    return RedirectToAction("Index", "Movie");
-                }
-            }
-            catch
-            {
-                return View("Error");
+                //Auto Mapper.
+                var mapCategory = new MapperConfiguration(configExpression => { configExpression.CreateMap<CategoryModel, Category>(); });
+                IMapper mapper = mapCategory.CreateMapper();
+                var category = mapper.Map<CategoryModel, Category>(categoryModel);
+                categoryBL.AddCategory(category); //Method call to add category
+                return RedirectToAction("Index", "Movie");
             }
             return View();
         }

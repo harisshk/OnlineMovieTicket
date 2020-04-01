@@ -178,7 +178,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BookingController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
-    <Compile Include="Authorization\CustomAuthorization.cs" />
+    <Compile Include="Filter\CustomAuthorization.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MovieController.cs" />
     <Compile Include="Global.asax.cs">

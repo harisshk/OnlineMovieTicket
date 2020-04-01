@@ -78,6 +78,10 @@
     <Compile Include="Migrations\202003311248220_required.designer.cs">
       <DependentUpon>202003311248220_required.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202004010502158_required1.cs" />
+    <Compile Include="Migrations\202004010502158_required1.designer.cs">
+      <DependentUpon>202004010502158_required1.cs</DependentUpon>
+    </Compile>
     <Compile Include="OnlineMovieTicketDBContext.cs" />
     <Compile Include="Migrations\202003181642352_InitialCreate.cs" />
     <Compile Include="Migrations\202003181642352_InitialCreate.designer.cs">
@@ -128,6 +132,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202003311248220_required.resx">
       <DependentUpon>202003311248220_required.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004010502158_required1.resx">
+      <DependentUpon>202004010502158_required1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 namespace OnlineMovieTicket.Models
 {
-    internal class SignupViewModel
+    public class SignupViewModel
     {
         [Key]
         public int UserId { get; set; }

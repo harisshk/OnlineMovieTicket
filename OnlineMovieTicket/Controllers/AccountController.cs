@@ -12,86 +12,66 @@ namespace OnlineMovieTicket.Controllers
     {
         public AccountBL accountBL = new BL.AccountBL();
 
-        public ActionResult Login()
+        public ActionResult Login() //Login [GET]
         {
             return View();
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        internal ActionResult Login(LoginViewModel login)
+        public ActionResult Login(LoginViewModel login) //Login [POST]
         {
-            try
+            if (ModelState.IsValid)
             {
-                if (ModelState.IsValid)
+                //Auto mapper
+                var mapAccount = new MapperConfiguration(configExpression => { configExpression.CreateMap<LoginViewModel, Account>(); });
+                IMapper mapper = mapAccount.CreateMapper();
+                var account = mapper.Map<LoginViewModel, Account>(login);
+
+                Account accountDetails = accountBL.CheckUser(account);
+                if (accountDetails != null)
                 {
-                    var mapAccount = new MapperConfiguration(configExpression => { configExpression.CreateMap<LoginViewModel, Account>(); });
-                    IMapper mapper = mapAccount.CreateMapper();
-                    var account = mapper.Map<LoginViewModel, Account>(login);
+                    FormsAuthentication.SetAuthCookie(accountDetails.Name, false);
+                    var authTicket = new FormsAuthenticationTicket(1, accountDetails.Name, DateTime.Now, DateTime.Now.AddMinutes(20), false, accountDetails.Role); //Authentication ticket is created to track session of user.
+                    string encryptedTicket = FormsAuthentication.Encrypt(authTicket);
+                    var authCookie = new HttpCookie(FormsAuthentication.FormsCookieName, encryptedTicket);
+                    HttpContext.Response.Cookies.Add(authCookie); //Session is added in cookies
+                    return RedirectToAction("Index", "Movie");
 
-                    Account accountDetails = accountBL.CheckUser(account);
-                    if (accountDetails != null)
-                    {
-                        FormsAuthentication.SetAuthCookie(accountDetails.Name, false);
-                        var authTicket = new FormsAuthenticationTicket(1, accountDetails.Name, DateTime.Now, DateTime.Now.AddMinutes(20), false, accountDetails.Role);
-                        string encryptedTicket = FormsAuthentication.Encrypt(authTicket);
-                        var authCookie = new HttpCookie(FormsAuthentication.FormsCookieName, encryptedTicket);
-                        HttpContext.Response.Cookies.Add(authCookie);
-                        return RedirectToAction("Index", "Movie");
-
-                        //Session["UserId"] = accountDetails.UserId;
-                        //return RedirectToAction("Index", "Movie");
-                    }
-                    else
-                        TempData["LoginErrorMessage"] = "Invalid Username or Password";
-
-                    //}
                 }
+                else
+                    TempData["LoginErrorMessage"] = "Invalid Username or Password";
             }
-            catch
-            {
-                return View("Error");
-            }
-            
-          
+
+
             return View();
         }
-        public ActionResult Signup()
+        public ActionResult Signup() //Signup [GET]
         {
             return View();
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        internal ActionResult Signup(SignupViewModel signup)
+        public ActionResult Signup(SignupViewModel signup) //Signup [POST]
         {
-            try
+            if (ModelState.IsValid)
             {
-                if (ModelState.IsValid)
-                {
-                    var mapAccount = new MapperConfiguration(configExpression => { configExpression.CreateMap<SignupViewModel, Account>(); });
-                    IMapper mapper = mapAccount.CreateMapper();
-                    var account = mapper.Map<SignupViewModel, Account>(signup);
-                    account.Role = "User";
-
-
-                    accountBL.AddUser(account);
-
-                    // ModelState.Clear();
-                    return RedirectToAction("Login");
-                }
+                //Auto Mapper.
+                var mapAccount = new MapperConfiguration(configExpression => { configExpression.CreateMap<SignupViewModel, Account>(); });
+                IMapper mapper = mapAccount.CreateMapper();
+                var account = mapper.Map<SignupViewModel, Account>(signup);
+                accountBL.AddUser(account);
+                return RedirectToAction("Login");
             }
-            catch
-            {
-                return View("Error");
-            }
+
             return View();
         }
-       
 
-        public ActionResult LogOff()
+
+        public ActionResult LogOff() //Log out
         {
             //AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
-            FormsAuthentication.SignOut();
+            FormsAuthentication.SignOut(); //Session is end for the user.
             return RedirectToAction("Index", "Movie");
         }
     }

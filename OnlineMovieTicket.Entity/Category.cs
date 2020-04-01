@@ -13,7 +13,6 @@ namespace OnlineMovieTicket.Entity
         [Required]
         [MaxLength(100)]
         public string CategoryDescription { get; set; }
-        
         public ICollection<Movie> Movies { get; set; }
 
     }

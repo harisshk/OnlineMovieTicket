@@ -2,8 +2,8 @@
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
-    
-  
+
+
 }
 <script src="~/Scripts/jquery-3.4.1.min.js"></script>
 <script src="~/Scripts/jquery.validate.min.js"></script>
@@ -11,40 +11,39 @@
 <h2>Home</h2>
 <br />
 @if (TempData["Message"] != null)
-{
+ {
     @Html.Label((string)TempData["Message"])
-}
+ }
 <table border="1">
     <tr>
         <th>Movie Name</th>
-        <th>Movie Id</th>
         <td>ShowTimeMorning</td>
         <td>ShowTimeAfternoon</td>
         <td>ShowTimeEvening</td>
         <td>Duration</td>
         <td>Price</td>
+        <td>Category</td>
     </tr>
     @foreach (OnlineMovieTicket.Entity.Movie movie in @Model)
-    {
+     {
         <tr>
             <td>@movie.MovieName</td>
-            <td>@movie.MovieId</td>
             <td>@movie.ShowTimeMorning</td>
             <td>@movie.ShowTimeAfternoon</td>
             <td>@movie.ShowTimeEvening</td>
             <td>@movie.Duration</td>
             <td>@movie.Price</td>
-           <td> @movie.Category</td>
+            <td> @movie.Category.CategoryName</td>
             <td>
-                @Html.ActionLink("Book", "Book","Booking")</td>
-                @if (HttpContext.Current.User.IsInRole("Admin"))
-                {
-<td>
+                @Html.ActionLink("Book", "Book", "Booking")
+            </td>
+            @if (HttpContext.Current.User.IsInRole("Admin"))
+             {
+                <td>
                     @Html.ActionLink("Edit", "EditMovie", new { id = movie.MovieId })
                     @Html.ActionLink("Delete", "DeleteMovie", new { id = movie.MovieId })
                 </td>
-            }
-
+             }
         </tr>
-    }
+     }
 </table>

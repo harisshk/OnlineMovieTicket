@@ -6,7 +6,7 @@ namespace OnlineMovieTicket.BL
 {
     public interface IMovieBL
     {
-        List<Movie> GetAllMovies();
+        IEnumerable<Movie> GetAllMovies();
         void DeleteMovie(int id);
         void CreateMovie(Movie movie);
         void UpdateMovie(Movie movie);
@@ -17,7 +17,7 @@ namespace OnlineMovieTicket.BL
     {
         public MovieRepository movieRepository = new MovieRepository();
 
-        public List<Movie> GetAllMovies()
+        public IEnumerable<Movie> GetAllMovies()
         {
             return movieRepository.GetAllMovies();
         }

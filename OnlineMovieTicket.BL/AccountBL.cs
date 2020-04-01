@@ -4,7 +4,7 @@ using OnlineMovieTicket.Repository;
 
 namespace OnlineMovieTicket.BL
 {
-    public interface IAccountBL
+    public interface IAccountBL //Interface for AccountBL
     {
         void AddUser(Account account);
         Account CheckUser(Account account);
@@ -13,12 +13,12 @@ namespace OnlineMovieTicket.BL
     {
         public AccountRepository accountRepository = new AccountRepository();
 
-        public void AddUser(Account account)
+        public void AddUser(Account account) //Add user 
         {
             account.Role = "User";
             accountRepository.AddUser(account);
         }
-        public Account CheckUser(Account account)
+        public Account CheckUser(Account account) //Check user
         {
             return accountRepository.CheckUser(account);
         }

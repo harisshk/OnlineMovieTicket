@@ -9,15 +9,15 @@ namespace OnlineMovieTicket.Repository
     }
     public class AccountRepository:IAccountRepository
     {
-        public void AddUser(Account account)
+        public void AddUser(Account account) //Add user to Database
         {
             using (OnlineMovieTicketDBContext onlineMovieTicketDBContext = new OnlineMovieTicketDBContext())
             {
                 onlineMovieTicketDBContext.AccountDetails.Add(account);
-                onlineMovieTicketDBContext.SaveChanges();
+                onlineMovieTicketDBContext.SaveChanges(); // Update the database
             }
         }
-        public Account CheckUser(Account account)
+        public Account CheckUser(Account account) //Check existing user.
         {
             using (OnlineMovieTicketDBContext onlineMovieTicketDBContext = new OnlineMovieTicketDBContext())
             {

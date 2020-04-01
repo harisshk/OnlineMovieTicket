@@ -7,7 +7,7 @@ namespace OnlineMovieTicket.Repository
 {
     public interface IMovieRepository
     {
-        List<Movie> GetAllMovies();
+        IEnumerable<Movie> GetAllMovies();
         void AddMovie(Movie movie);
         void DeleteMovie(int movieId);
         Movie GetMovieId(int id);
@@ -17,12 +17,12 @@ namespace OnlineMovieTicket.Repository
     public class MovieRepository : IMovieRepository
     {
 
-        public List<Movie> GetAllMovies() //Get all movies from Database.
+        public IEnumerable<Movie> GetAllMovies() //Get all movies from Database.
         {
             using (OnlineMovieTicketDBContext onlineMovieTicketDBContext = new OnlineMovieTicketDBContext())
             {
 
-                List<Movie> movie = onlineMovieTicketDBContext.MovieDetails.Include("Category").ToList();
+                IEnumerable<Movie> movie = onlineMovieTicketDBContext.MovieDetails.Include("Category").ToList();
                 return movie;
             }
         }

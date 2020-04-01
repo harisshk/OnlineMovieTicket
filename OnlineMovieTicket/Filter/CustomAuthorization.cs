@@ -8,12 +8,11 @@ namespace OnlineMovieTicket.Controllers
         {
             if(AuthorizeCore(filterContext.HttpContext))
             {
-
             base.OnAuthorization(filterContext);
             }
             else
             {
-                filterContext.Result = new RedirectResult("~/Home/Authorize");
+                filterContext.Result = new RedirectResult("~/Account/Login");
             }
         }
     }

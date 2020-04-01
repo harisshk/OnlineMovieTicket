@@ -11,7 +11,7 @@ namespace OnlineMovieTicket.Controllers
     [CustomAuthorization]
     public class CategoryController : Controller
     {
-        public CategoryBL categoryBL;
+        readonly CategoryBL categoryBL;
         public CategoryController() //Constructor.
         {
             categoryBL = new CategoryBL(); //Creating object to access CategoryBL class.

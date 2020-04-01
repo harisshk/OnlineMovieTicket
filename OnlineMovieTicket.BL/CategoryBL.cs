@@ -8,42 +8,24 @@ using System.Threading.Tasks;
 
 namespace OnlineMovieTicket.BL
 {
-    public interface ICategoryBL
+    public interface ICategoryBL //Interface in Category.
     {
         void AddCategory(Category category);
         IEnumerable<Category> CategoryDetails();
-        Category Details(int id);
-        void Delete(int id);
-        void Update(Category category);
-        Category GetCategory(int id);
+       
     }
-    public class CategoryBL : ICategoryBL
+    public class CategoryBL : ICategoryBL //Class derived from inteface.
     {
         public CategoryRepository categoryRepository = new CategoryRepository();
-        public void AddCategory(Category category)
+        public void AddCategory(Category category) //Add category.
         {
             categoryRepository.AddCategory(category);
         }
 
-        public IEnumerable<Category> CategoryDetails()
+        public IEnumerable<Category> CategoryDetails() //Get category details
         {
             return categoryRepository.CategoryDetails();
         }
-        public Category Details(int id)
-        {
-            return categoryRepository.Details(id);
-        }
-        public void Delete(int id)
-        {
-             categoryRepository.Delete(id);
-        }
-        public void Update(Category category)
-        {
-            categoryRepository.Update(category);
-        }
-        public Category GetCategory(int id)
-        {
-            return categoryRepository.GetCategory(id);
-        }
+        
     }
 }

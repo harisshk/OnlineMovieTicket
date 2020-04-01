@@ -1,18 +1,17 @@
 ﻿using AutoMapper;
 using OnlineMovieTicket.BL;
 using OnlineMovieTicket.Entity;
-using OnlineMovieTicket.Filter.ExceptionFilterInMVC.Models;
 using OnlineMovieTicket.Models;
 using System.Collections.Generic;
 using System.Web.Mvc;
 
 namespace OnlineMovieTicket.Controllers
 {
-    [LogCustomExceptionFilter]
+
     public class MovieController : Controller
     {
-        public MovieBL movieBL;
-        public CategoryBL categoryBL;
+         readonly MovieBL movieBL;
+         readonly CategoryBL categoryBL;
         public MovieController() //Constructor
         {
             movieBL = new MovieBL();

@@ -1,10 +1,8 @@
 ﻿@model OnlineMovieTicket.Entity.Movie
 
-
 @{
     ViewBag.Title = "Create";
     Layout = "~/Views/Shared/_Layout.cshtml";
-
 }
 <h2></h2>
 <script src="~/Scripts/jquery-3.4.1.min.js"></script>
@@ -13,7 +11,7 @@
 <script src="~/Scripts/bootstrap-datetimepicker.js"></script>
 
 @using (Html.BeginForm("CreateMovie", "Movie", FormMethod.Post))
-{
+ {
     @Html.AntiForgeryToken()
     <table>
         <tr>
@@ -26,9 +24,7 @@
             <td style="color:red">
                 @Html.ValidationMessageFor(model => model.MovieName)
             </td>
-
         </tr>
-
         <tr>
             <td>
                 Show Time Morning:
@@ -94,7 +90,6 @@
             </td>
 
         </tr>
-
         <tr>
             <td>
                 <input type="submit" value="Create" />
@@ -104,5 +99,4 @@
             </td>
         </tr>
     </table>
-
-}
+ }

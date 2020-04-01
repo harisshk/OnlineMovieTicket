@@ -27,7 +27,7 @@ namespace OnlineMovieTicket.Controllers
                 IMapper mapper = mapAccount.CreateMapper();
                 var account = mapper.Map<LoginViewModel, Account>(login);
 
-                Account accountDetails = accountBL.CheckUser(account);
+                Account accountDetails = accountBL.CheckUser(account); //Method call to check user.
                 if (accountDetails != null)
                 {
                     FormsAuthentication.SetAuthCookie(accountDetails.Name, false);
@@ -60,7 +60,7 @@ namespace OnlineMovieTicket.Controllers
                 var mapAccount = new MapperConfiguration(configExpression => { configExpression.CreateMap<SignupViewModel, Account>(); });
                 IMapper mapper = mapAccount.CreateMapper();
                 var account = mapper.Map<SignupViewModel, Account>(signup);
-                accountBL.AddUser(account);
+                accountBL.AddUser(account); //Method call to add user details
                 return RedirectToAction("Login");
             }
 

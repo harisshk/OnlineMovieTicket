@@ -8,10 +8,16 @@ namespace OnlineMovieTicket.Entity
         [MaxLength(20)]
         public string MovieName { get; set; }
         [Required]
+        [DataType(DataType.Time)]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:HH:MM}")]
         public DateTime ShowTimeMorning { get; set; }
         [Required]
+        [DataType(DataType.Time)]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:HH:MM}")]
         public DateTime ShowTimeAfternoon { get; set; }
         [Required]
+        [DataType(DataType.Time)]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:HH:MM}")]
         public DateTime ShowTimeEvening { get; set; }
         [Key]
         public int MovieId { get; set; }

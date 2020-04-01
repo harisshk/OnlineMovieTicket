@@ -4,7 +4,9 @@
     ViewBag.Title = "AddCategory";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
 @using (Html.BeginForm("AddCategory", "Category", FormMethod.Post))
 {
     @Html.AntiForgeryToken()

@@ -3,7 +3,7 @@ using System;
 
 namespace OnlineMovieTicket.Models
 {
-    internal class MovieModel
+    public class MovieModel
     {
        [Required(ErrorMessage ="Movie name is required")]
        [MaxLength(20)]

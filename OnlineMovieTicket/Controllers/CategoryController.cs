@@ -1,12 +1,14 @@
 ﻿using AutoMapper;
 using OnlineMovieTicket.BL;
 using OnlineMovieTicket.Entity;
+using OnlineMovieTicket.Filter.ExceptionFilterInMVC.Models;
 using OnlineMovieTicket.Models;
 using System.Web.Mvc;
 
 namespace OnlineMovieTicket.Controllers
 {
-    [Authorize]
+    [LogCustomExceptionFilter]
+    [CustomAuthorization]
     public class CategoryController : Controller
     {
         public CategoryBL categoryBL;

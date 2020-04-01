@@ -13,6 +13,9 @@ namespace OnlineMovieTicket.Controllers
         {
             return View("AboutUs");
         }
-
+        public ActionResult Authorize()
+        {
+            return View("Authorize");
+        }
     }
 }

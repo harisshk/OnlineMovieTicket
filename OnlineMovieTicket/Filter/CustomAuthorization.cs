@@ -13,7 +13,7 @@ namespace OnlineMovieTicket.Controllers
             }
             else
             {
-                filterContext.Result = new RedirectResult("~/Account/Login");
+                filterContext.Result = new RedirectResult("~/Home/Authorize");
             }
         }
     }

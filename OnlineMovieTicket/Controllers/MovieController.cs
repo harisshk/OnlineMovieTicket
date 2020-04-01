@@ -9,7 +9,6 @@ using System.Web.Mvc;
 namespace OnlineMovieTicket.Controllers
 {
     [LogCustomExceptionFilter]
-    
     public class MovieController : Controller
     {
         public MovieBL movieBL;
@@ -29,7 +28,7 @@ namespace OnlineMovieTicket.Controllers
         [CustomAuthorization(Roles = "Admin")]
         public ActionResult CreateMovie() //Add Movie Page [GET]
         {
-            IEnumerable<OnlineMovieTicket.Entity.Category> category = categoryBL.CategoryDetails();
+            IEnumerable<OnlineMovieTicket.Entity.Category> category = categoryBL.CategoryDetails();//Get category into movie add view.
             ViewBag.categories = new SelectList(category, "CategoryId", "CategoryName", "CategoryDescription");
             return View();
         }
@@ -38,23 +37,16 @@ namespace OnlineMovieTicket.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult CreateMovie(MovieModel movieModel) //Add Movie Page [POST]
         {
-            try
+            if (ModelState.IsValid)
             {
-                if (ModelState.IsValid)
-                {
-                    //Auto Mapper
-                    var mapMovie = new MapperConfiguration(configExpression => { configExpression.CreateMap<MovieModel, Movie>(); });
-                    IMapper mapper = mapMovie.CreateMapper();
-                    var movie = mapper.Map<MovieModel, Movie>(movieModel);
-                    IEnumerable<OnlineMovieTicket.Entity.Category> categorys = categoryBL.CategoryDetails();
-                    ViewBag.categories = new SelectList(categorys, "CategoryId", "CategoryName", "CategoryDescription");
-                    movieBL.CreateMovie(movie);
-                    return RedirectToAction("Index", "Movie");
-                }
-            }
-            catch
-            {
-                return View("Error");
+                //Auto Mapper
+                var mapMovie = new MapperConfiguration(configExpression => { configExpression.CreateMap<MovieModel, Movie>(); });
+                IMapper mapper = mapMovie.CreateMapper();
+                var movie = mapper.Map<MovieModel, Movie>(movieModel);
+                IEnumerable<OnlineMovieTicket.Entity.Category> categorys = categoryBL.CategoryDetails();//Get category into movie add view.
+                ViewBag.categories = new SelectList(categorys, "CategoryId", "CategoryName", "CategoryDescription");
+                movieBL.CreateMovie(movie);
+                return RedirectToAction("Index", "Movie");
             }
             return View();
         }

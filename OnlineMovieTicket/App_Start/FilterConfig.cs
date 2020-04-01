@@ -9,7 +9,6 @@ namespace OnlineMovieTicket
         {
             filters.Add(new HandleErrorAttribute());
             filters.Add(new LogCustomExceptionFilter());
-
         }
     }
 }

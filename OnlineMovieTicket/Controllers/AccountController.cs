@@ -6,8 +6,11 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
 using AutoMapper;
+using OnlineMovieTicket.Filter.ExceptionFilterInMVC.Models;
+
 namespace OnlineMovieTicket.Controllers
 {
+    [LogCustomExceptionFilter]
     public class AccountController : Controller
     {
         public AccountBL accountBL = new BL.AccountBL();
@@ -16,6 +19,7 @@ namespace OnlineMovieTicket.Controllers
         {
             return View();
         }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Login(LoginViewModel login) //Login [POST]
@@ -41,10 +45,9 @@ namespace OnlineMovieTicket.Controllers
                 else
                     TempData["LoginErrorMessage"] = "Invalid Username or Password";
             }
-
-
             return View();
         }
+
         public ActionResult Signup() //Signup [GET]
         {
             return View();
@@ -63,10 +66,8 @@ namespace OnlineMovieTicket.Controllers
                 accountBL.AddUser(account); //Method call to add user details
                 return RedirectToAction("Login");
             }
-
             return View();
         }
-
 
         public ActionResult LogOff() //Log out
         {

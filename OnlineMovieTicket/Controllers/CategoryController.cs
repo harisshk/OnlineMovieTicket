@@ -7,8 +7,7 @@ using System.Web.Mvc;
 
 namespace OnlineMovieTicket.Controllers
 {
-    [LogCustomExceptionFilter]
-    [CustomAuthorization]
+    [CustomAuthorization(Roles="Admin")]
     public class CategoryController : Controller
     {
         readonly CategoryBL categoryBL;

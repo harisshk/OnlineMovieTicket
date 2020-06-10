@@ -40,7 +40,6 @@ namespace OnlineMovieTicket.Controllers
                     var authCookie = new HttpCookie(FormsAuthentication.FormsCookieName, encryptedTicket);
                     HttpContext.Response.Cookies.Add(authCookie); //Session is added in cookies
                     return RedirectToAction("Index", "Movie");
-
                 }
                 else
                     TempData["LoginErrorMessage"] = "Invalid Username or Password";

@@ -17,7 +17,6 @@ namespace OnlineMovieTicket.Controllers
             movieBL = new MovieBL();
             categoryBL = new CategoryBL();
         }
-        [AllowAnonymous]
         public ActionResult Index() //HomePage
         {
             var movies = movieBL.GetAllMovies();

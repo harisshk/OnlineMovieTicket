@@ -7,6 +7,7 @@
 <script src="~/Scripts/jquery-3.4.1.min.js"></script>
 <script src="~/Scripts/jquery.validate.min.js"></script>
 <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
 @using (Html.BeginForm("Login", "Account", FormMethod.Post))
 {
     @Html.AntiForgeryToken()
@@ -17,12 +18,15 @@
                 <form>
                     <div class="input-wrap">
                         @Html.Label("Email")
-                        @Html.TextBoxFor(Model => Model.Email, htmlAttributes: new { @placeholder = "Email" })
+                        @Html.TextBoxFor(Model => Model.Email, htmlAttributes: new { @placeholder = "Email", @class="login-box-outer-input" })
                         @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
                     </div>
-                    <div class="input-wrap">
+                    <div class="input-wrap-pass">
                         @Html.Label("Password")
-                        @Html.PasswordFor(Model => Model.Password, htmlAttributes: new { @placeholder = "Password" })
+                        </div>
+                    <div class="input-wrap-password-box">
+                        @Html.PasswordFor(Model => Model.Password, htmlAttributes: new { @placeholder = "Password", @id = "password_id",@class="hidden-pass"})
+                       <i toggle="#password-field" class="fa fa-fw fa-eye field_icon toggle-password" style="padding:0px 3px 0px 3px"></i><br />
                         @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
                     </div>
                     <div class="input-wrap-red">
@@ -43,3 +47,12 @@
     </body>
 }
 
+<script>
+    $(document).on('click', '.toggle-password', function () {
+
+        $(this).toggleClass("fa-eye fa-eye-slash");
+
+        var input = $("#password_id");
+        input.attr('type') === 'password' ? input.attr('type', 'text') : input.attr('type', 'password')
+    });
+</script>
